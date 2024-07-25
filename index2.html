@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <div class="background-letters"></div> <!-- کانتینر حروف شناور -->
     <div class="menu-toggle" id="menu-toggle">
@@ -15,7 +17,7 @@
     </div>
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Menu</h3>
+            <h3 class="menu-nav">Menu</h3>
             <i class="fas fa-times" id="close-btn"></i>
         </div>
         <ul class="menu">
@@ -36,11 +38,11 @@
         }
 
         // Menu toggle script
-        document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('menu-toggle').addEventListener('click', function () {
             document.getElementById('sidebar').classList.add('active');
         });
 
-        document.getElementById('close-btn').addEventListener('click', function() {
+        document.getElementById('close-btn').addEventListener('click', function () {
             document.getElementById('sidebar').classList.remove('active');
         });
 
@@ -65,4 +67,5 @@
         createFloatingLetters();
     </script>
 </body>
+
 </html>
