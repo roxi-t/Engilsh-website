@@ -35,6 +35,7 @@ const resultContainer = document.getElementById('result')
 const resultMessage = document.getElementById('result-message')
 const questionImage = document.getElementById('question-image')
 const restartButton = document.getElementById('restart')
+const viewResultsButton = document.getElementById('view-results')
 
 const questions = {
     Beginner: easyQB,
@@ -70,20 +71,54 @@ function showQuestion() {
         optionsElement.innerHTML = ""
 
         currentQuestion.options.forEach(option => {
+            const scrambledOption = shuffleString(option.toUpperCase())
             const button = document.createElement('button')
-            button.textContent = option
-            button.onclick = () => handleAnswer(option === currentQuestion.correct)
+            button.textContent = scrambledOption
+            button.onclick = () => selectScrambledOption(scrambledOption, option)
             optionsElement.appendChild(button)
         })
+
+        const userInput = document.createElement('input')
+        userInput.type = 'text'
+        userInput.id = 'user-answer'
+        userInput.placeholder = 'Type your answer here...'
+        optionsElement.appendChild(userInput)
+
+        const submitButton = document.createElement('button')
+        submitButton.textContent = 'Submit'
+        submitButton.classList.add('btn')
+        submitButton.onclick = () => checkAnswer(currentQuestion.correct, userInput.value)
+        optionsElement.appendChild(submitButton)
 
         n++
         hideLoading()
     }, 1000)
 }
 
-function handleAnswer(isCorrect) {
-    if (isCorrect) score++
+function shuffleString(str) {
+    const arr = str.split('')
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+    return arr.join('')
+}
 
+function selectScrambledOption(scrambledOption, correctOption) {
+    const userInput = document.getElementById('user-answer')
+    userInput.value = correctOption // Directly place the correct option for now
+}
+
+function checkAnswer(correctAnswer, userAnswer) {
+    if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+        score++
+        handleAnswer(true)
+    } else {
+        handleAnswer(false)
+    }
+}
+
+function handleAnswer(isCorrect) {
     if (status === "Beginner") {
         if (isCorrect) {
             B++
@@ -110,10 +145,9 @@ function handleAnswer(isCorrect) {
 function showResultsButton() {
     questionContainer.classList.add('hidden')
     resultContainer.classList.remove('hidden')
-    document.getElementById('view-results').classList.remove('hidden')
+    viewResultsButton.classList.remove('hidden')
 
-    // تنظیم رویداد کلیک برای دکمه "View Results"
-    document.getElementById('view-results').addEventListener('click', () => {
+    viewResultsButton.addEventListener('click', () => {
         localStorage.setItem('score', score) // ذخیره نمره در localStorage
         window.location.href = 'index3.html' // هدایت به صفحه نمرات
     })
@@ -128,7 +162,7 @@ restartButton.addEventListener('click', () => {
     score = 0
     questionContainer.classList.remove('hidden')
     resultContainer.classList.add('hidden')
-    document.getElementById('view-results').classList.add('hidden')
+    viewResultsButton.classList.add('hidden')
     showQuestion()
 })
 

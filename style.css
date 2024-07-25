@@ -125,3 +125,18 @@ h1 {
     background: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
 }
+/* سایر استایل‌ها */
+
+#answer-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#user-answer {
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+}
