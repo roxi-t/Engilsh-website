@@ -22,144 +22,213 @@ const advancedQB = [
     { question: "What is the largest planet in our solar system?", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Jupiter", image: "5.webp" }
 ];
 
-let status = "Beginner"
-let n = 0
-let B = 0, I = 0, A = 0
-let score = 0
+let status = "Beginner";
+let n = 0;
+let B = 0, I = 0, A = 0;
+let score = 0;
 
-const loadingElement = document.getElementById('loading')
-const questionContainer = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const optionsElement = document.getElementById('options')
-const resultContainer = document.getElementById('result')
-const resultMessage = document.getElementById('result-message')
-const questionImage = document.getElementById('question-image')
-const restartButton = document.getElementById('restart')
-const viewResultsButton = document.getElementById('view-results')
+const loadingElement = document.getElementById('loading');
+const questionContainer = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const resultContainer = document.getElementById('result');
+const resultMessage = document.getElementById('result-message');
+const questionImage = document.getElementById('question-image');
+const restartButton = document.getElementById('restart');
+const viewResultsButton = document.getElementById('view-results');
 
 const questions = {
     Beginner: easyQB,
     Intermediate: intermediateQB,
     Advanced: advancedQB
-}
+};
 
 function showLoading() {
-    loadingElement.classList.remove('hidden')
-    questionContainer.classList.add('hidden')
-    resultContainer.classList.add('hidden')
+    loadingElement.classList.remove('hidden');
+    questionContainer.classList.add('hidden');
+    resultContainer.classList.add('hidden');
 }
 
 function hideLoading() {
-    loadingElement.classList.add('hidden')
-    questionContainer.classList.remove('hidden')
+    loadingElement.classList.add('hidden');
+    questionContainer.classList.remove('hidden');
 }
 
 function showQuestion() {
     if (n >= 5) {
-        showResultsButton()
-        return
+        showResultsButton();
+        return;
     }
 
-    showLoading()
+    showLoading();
 
     setTimeout(() => {
-        const currentQuestions = questions[status]
-        const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)]
+        const currentQuestions = questions[status];
+        const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
 
-        questionElement.textContent = currentQuestion.question
-        questionImage.src = currentQuestion.image
-        optionsElement.innerHTML = ""
+        questionElement.textContent = currentQuestion.question;
+        questionImage.src = currentQuestion.image;
+        optionsElement.innerHTML = "";
 
-        const combinedLetters = shuffleLetters(currentQuestion.correct)
+        const combinedLetters = shuffleLetters(currentQuestion.correct);
 
         combinedLetters.forEach(letter => {
-            const letterElement = document.createElement('span')
-            letterElement.textContent = letter
-            letterElement.classList.add('letter')
-            letterElement.addEventListener('click', () => selectLetter(letterElement))
-            optionsElement.appendChild(letterElement)
-        })
+            const letterElement = document.createElement('span');
+            letterElement.textContent = letter;
+            letterElement.classList.add('letter');
+            letterElement.addEventListener('click', () => selectLetter(letterElement));
+            optionsElement.appendChild(letterElement);
+        });
 
-        n++
-        hideLoading()
-    }, 1000)
+        const userInput = document.createElement('input');
+        userInput.type = 'text';
+        userInput.id = 'user-answer';
+        userInput.placeholder = 'Type your answer here...';
+        userInput.readOnly = true; // غیرفعال کردن تایپ دستی
+        optionsElement.appendChild(userInput);
+
+        const submitButton = document.createElement('button');
+        submitButton.textContent = 'Submit';
+        submitButton.classList.add('btn');
+        submitButton.onclick = () => {
+            checkAnswer(currentQuestion.correct, userInput.value);
+            userInput.value = ''; // پاک کردن فیلد پاسخ
+        };
+        optionsElement.appendChild(submitButton);
+
+        n++;
+        hideLoading();
+    }, 1000);
 }
 
 function shuffleLetters(answer) {
-    const letters = "abcdefghijklmnopqrstuvwxyz".split('')
-    const shuffledLetters = letters.sort(() => 0.5 - Math.random()).slice(0, 15)
-    const answerLetters = answer.split('').sort(() => 0.5 - Math.random())
-    return shuffledLetters.concat(answerLetters).sort(() => 0.5 - Math.random())
+    const letters = "abcdefghijklmnopqrstuvwxyz".split('');
+    const shuffledLetters = letters.sort(() => 0.5 - Math.random()).slice(0, 15);
+    const answerLetters = answer.split('').sort(() => 0.5 - Math.random());
+    return shuffledLetters.concat(answerLetters).sort(() => 0.5 - Math.random());
 }
 
 function selectLetter(letterElement) {
-    const userInput = document.getElementById('user-answer')
-    userInput.value += letterElement.textContent
-    letterElement.style.display = 'none'
+    const userInput = document.getElementById('user-answer');
+    userInput.value += letterElement.textContent;
+    letterElement.style.display = 'none';
 }
 
 function checkAnswer(correctAnswer, userAnswer) {
     if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
-        score++
-        handleAnswer(true)
+        score++;
+        handleAnswer(true);
     } else {
-        handleAnswer(false)
+        handleAnswer(false);
     }
 }
 
 function handleAnswer(isCorrect) {
     if (status === "Beginner") {
         if (isCorrect) {
-            B++
-            status = "Intermediate"
+            B++;
+            status = "Intermediate";
         }
     } else if (status === "Intermediate") {
         if (isCorrect) {
-            I++
-            status = "Advanced"
+            I++;
+            status = "Advanced";
         } else {
-            status = "Beginner"
+            status = "Beginner";
         }
     } else if (status === "Advanced") {
         if (isCorrect) {
-            A++
+            A++;
         } else {
-            status = "Intermediate"
+            status = "Intermediate";
         }
     }
 
-    showQuestion()
+    showQuestion();
 }
 
 function showResultsButton() {
-    questionContainer.classList.add('hidden')
-    resultContainer.classList.remove('hidden')
-    viewResultsButton.classList.remove('hidden')
+    questionContainer.classList.add('hidden');
+    resultContainer.classList.remove('hidden');
+    viewResultsButton.classList.remove('hidden');
 
     viewResultsButton.addEventListener('click', () => {
-        localStorage.setItem('score', score)
-        window.location.href = 'index3.html'
-    })
+        localStorage.setItem('score', score);
+        window.location.href = 'index3.html';
+    });
 }
 
 restartButton.addEventListener('click', () => {
-    status = "Beginner"
-    n = 0
-    B = 0
-    I = 0
-    A = 0
-    score = 0
-    questionContainer.classList.remove('hidden')
-    resultContainer.classList.add('hidden')
-    viewResultsButton.classList.add('hidden')
-    showQuestion()
-})
+    status = "Beginner";
+    n = 0;
+    B = 0;
+    I = 0;
+    A = 0;
+    score = 0;
+    questionContainer.classList.remove('hidden');
+    resultContainer.classList.add('hidden');
+    viewResultsButton.classList.add('hidden');
+    showQuestion();
+});
+// ... سایر کدها
 
-document.getElementById('submit').addEventListener('click', () => {
-    const userAnswer = document.getElementById('user-answer').value
-    const currentQuestions = questions[status]
-    const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)]
-    checkAnswer(currentQuestion.correct, userAnswer)
-})
+function showQuestion() {
+    if (n >= 5) {
+        showResultsButton();
+        return;
+    }
 
-showQuestion()
+    showLoading();
+
+    setTimeout(() => {
+        const currentQuestions = questions[status];
+        const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
+
+        questionElement.textContent = currentQuestion.question;
+        questionImage.src = currentQuestion.image;
+        optionsElement.innerHTML = ""; // پاک کردن گزینه‌های قبلی
+
+        const combinedLetters = shuffleLetters(currentQuestion.correct);
+
+        combinedLetters.forEach(letter => {
+            const letterElement = document.createElement('span');
+            letterElement.textContent = letter;
+            letterElement.classList.add('letter');
+            letterElement.addEventListener('click', () => selectLetter(letterElement));
+            optionsElement.appendChild(letterElement);
+        });
+
+        // ایجاد فیلد ورودی و دکمه ارسال تنها در صورت نبود آن‌ها
+        let userInput = document.getElementById('user-answer');
+        if (!userInput) {
+            userInput = document.createElement('input');
+            userInput.type = 'text';
+            userInput.id = 'user-answer';
+            userInput.placeholder = 'Type your answer here...';
+            userInput.readOnly = true;
+            optionsElement.appendChild(userInput);
+        } else {
+            userInput.value = ''; // پاک کردن فیلد ورودی در صورت وجود
+        }
+
+        let submitButton = document.getElementById('submit');
+        if (!submitButton) {
+            submitButton = document.createElement('button');
+            submitButton.id = 'submit';
+            submitButton.textContent = 'Submit';
+            submitButton.classList.add('btn');
+            submitButton.onclick = () => {
+                checkAnswer(currentQuestion.correct, userInput.value);
+                userInput.value = ''; // پاک کردن فیلد پاسخ
+            };
+            optionsElement.appendChild(submitButton);
+        }
+
+        n++;
+        hideLoading();
+    }, 1000);
+}
+
+// ... سایر کدها
+
+showQuestion();

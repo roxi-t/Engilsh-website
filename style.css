@@ -1,131 +1,77 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: #fff;
+    color: #333;
     overflow: hidden;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
     position: relative;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    z-index: 1; /* Ensure it is above floating puzzles */
 }
 
 h1 {
-    margin-bottom: 20px;
     font-size: 2.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FFFFFF;
-}
-
-#loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.spinner {
-    border: 6px solid rgba(255, 255, 255, 0.3);
-    border-top: 6px solid #fff;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-#options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.letter {
-    font-size: 2em;
-    margin: 5px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    user-select: none;
-}
-
-.letter:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
-}
-
-#result-message {
-    font-size: 1.5em;
-    margin-top: 20px;
-    color: #ffffff;
+    margin-bottom: 20px;
+    color: #444;
 }
 
 .question-image {
-    width: 100%;
-    max-width: 250px;
+    max-width: 70%; /* کوچکتر کردن تصویر */
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
+.letter {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.letter:hover {
+    background: #5568c3;
+}
+
 .btn {
-    background: rgba(255, 255, 255, 0.3);
+    background: #667eea;
     color: white;
     border: none;
-    padding: 15px 25px;
-    border-radius: 10px;
+    padding: 15px 30px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 1em;
     transition: background 0.3s, transform 0.3s;
+    margin-top: 20px;
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: #5568c3;
     transform: scale(1.05);
 }
 
 #answer-container {
     margin-top: 20px;
-    text-align: center;
 }
 
 #user-answer {
@@ -133,6 +79,46 @@ h1 {
     font-size: 1.2em;
     border: 2px solid #667eea;
     border-radius: 5px;
-    width: 80%;
-    max-width: 400px;
+    width: calc(100% - 24px); /* Adjusted width */
+    margin: 0 auto; /* Centered the input */
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* پازل‌های شناور */
+.floating-puzzles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-puzzles div {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: float 10s infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0) rotate(360deg);
+        opacity: 1;
+    }
 }
