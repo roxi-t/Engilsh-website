@@ -167,3 +167,21 @@ p {
 .menu li a:hover {
     color: #667eea;
 }
+/* استایل‌های موجود */
+
+#typing-text {
+    border-right: 2px solid #667eea;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #667eea; }
+}
