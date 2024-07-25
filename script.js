@@ -80,18 +80,6 @@ function showQuestion() {
             optionsElement.appendChild(letterElement)
         })
 
-        const userInput = document.createElement('input')
-        userInput.type = 'text'
-        userInput.id = 'user-answer'
-        userInput.placeholder = 'Type your answer here...'
-        optionsElement.appendChild(userInput)
-
-        const submitButton = document.createElement('button')
-        submitButton.textContent = 'Submit'
-        submitButton.classList.add('btn')
-        submitButton.onclick = () => checkAnswer(currentQuestion.correct, userInput.value)
-        optionsElement.appendChild(submitButton)
-
         n++
         hideLoading()
     }, 1000)
@@ -165,6 +153,13 @@ restartButton.addEventListener('click', () => {
     resultContainer.classList.add('hidden')
     viewResultsButton.classList.add('hidden')
     showQuestion()
+})
+
+document.getElementById('submit').addEventListener('click', () => {
+    const userAnswer = document.getElementById('user-answer').value
+    const currentQuestions = questions[status]
+    const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)]
+    checkAnswer(currentQuestion.correct, userAnswer)
 })
 
 showQuestion()
