@@ -68,7 +68,7 @@ function showQuestion() {
 
         questionElement.textContent = currentQuestion.question;
         questionImage.src = currentQuestion.image;
-        optionsElement.innerHTML = "";
+        optionsElement.innerHTML = ""; // پاک کردن گزینه‌های قبلی
 
         const combinedLetters = shuffleLetters(currentQuestion.correct);
 
@@ -80,21 +80,17 @@ function showQuestion() {
             optionsElement.appendChild(letterElement);
         });
 
-        const userInput = document.createElement('input');
-        userInput.type = 'text';
-        userInput.id = 'user-answer';
-        userInput.placeholder = 'Type your answer here...';
-        userInput.readOnly = true; // غیرفعال کردن تایپ دستی
-        optionsElement.appendChild(userInput);
-
-        const submitButton = document.createElement('button');
-        submitButton.textContent = 'Submit';
-        submitButton.classList.add('btn');
-        submitButton.onclick = () => {
-            checkAnswer(currentQuestion.correct, userInput.value);
-            userInput.value = ''; // پاک کردن فیلد پاسخ
-        };
-        optionsElement.appendChild(submitButton);
+        let userInput = document.getElementById('user-answer');
+        if (!userInput) {
+            userInput = document.createElement('input');
+            userInput.type = 'text';
+            userInput.id = 'user-answer';
+            userInput.placeholder = 'Type your answer here...';
+            userInput.readOnly = true;
+            optionsElement.appendChild(userInput);
+        } else {
+            userInput.value = ''; // پاک کردن فیلد ورودی در صورت وجود
+        }
 
         n++;
         hideLoading();
@@ -144,7 +140,8 @@ function handleAnswer(isCorrect) {
         }
     }
 
-    showQuestion();
+    n++;
+    showQuestion(); // فراخوانی مجدد برای نمایش سوال بعدی
 }
 
 function showResultsButton() {
@@ -170,65 +167,10 @@ restartButton.addEventListener('click', () => {
     viewResultsButton.classList.add('hidden');
     showQuestion();
 });
-// ... سایر کدها
 
-function showQuestion() {
-    if (n >= 5) {
-        showResultsButton();
-        return;
-    }
-
-    showLoading();
-
-    setTimeout(() => {
-        const currentQuestions = questions[status];
-        const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
-
-        questionElement.textContent = currentQuestion.question;
-        questionImage.src = currentQuestion.image;
-        optionsElement.innerHTML = ""; // پاک کردن گزینه‌های قبلی
-
-        const combinedLetters = shuffleLetters(currentQuestion.correct);
-
-        combinedLetters.forEach(letter => {
-            const letterElement = document.createElement('span');
-            letterElement.textContent = letter;
-            letterElement.classList.add('letter');
-            letterElement.addEventListener('click', () => selectLetter(letterElement));
-            optionsElement.appendChild(letterElement);
-        });
-
-        // ایجاد فیلد ورودی و دکمه ارسال تنها در صورت نبود آن‌ها
-        let userInput = document.getElementById('user-answer');
-        if (!userInput) {
-            userInput = document.createElement('input');
-            userInput.type = 'text';
-            userInput.id = 'user-answer';
-            userInput.placeholder = 'Type your answer here...';
-            userInput.readOnly = true;
-            optionsElement.appendChild(userInput);
-        } else {
-            userInput.value = ''; // پاک کردن فیلد ورودی در صورت وجود
-        }
-
-        let submitButton = document.getElementById('submit');
-        if (!submitButton) {
-            submitButton = document.createElement('button');
-            submitButton.id = 'submit';
-            submitButton.textContent = 'Submit';
-            submitButton.classList.add('btn');
-            submitButton.onclick = () => {
-                checkAnswer(currentQuestion.correct, userInput.value);
-                userInput.value = ''; // پاک کردن فیلد پاسخ
-            };
-            optionsElement.appendChild(submitButton);
-        }
-
-        n++;
-        hideLoading();
-    }, 1000);
-}
-
-// ... سایر کدها
+document.getElementById('submit').addEventListener('click', () => {
+    const userInput = document.getElementById('user-answer').value;
+    checkAnswer(currentQuestion.correct, userInput);
+});
 
 showQuestion();
