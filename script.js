@@ -70,12 +70,14 @@ function showQuestion() {
         questionImage.src = currentQuestion.image
         optionsElement.innerHTML = ""
 
-        currentQuestion.options.forEach(option => {
-            const scrambledOption = shuffleString(option.toUpperCase())
-            const button = document.createElement('button')
-            button.textContent = scrambledOption
-            button.onclick = () => selectScrambledOption(scrambledOption, option)
-            optionsElement.appendChild(button)
+        const combinedLetters = shuffleLetters(currentQuestion.correct)
+
+        combinedLetters.forEach(letter => {
+            const letterElement = document.createElement('span')
+            letterElement.textContent = letter
+            letterElement.classList.add('letter')
+            letterElement.addEventListener('click', () => selectLetter(letterElement))
+            optionsElement.appendChild(letterElement)
         })
 
         const userInput = document.createElement('input')
@@ -95,18 +97,17 @@ function showQuestion() {
     }, 1000)
 }
 
-function shuffleString(str) {
-    const arr = str.split('')
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        [arr[i], arr[j]] = [arr[j], arr[i]]
-    }
-    return arr.join('')
+function shuffleLetters(answer) {
+    const letters = "abcdefghijklmnopqrstuvwxyz".split('')
+    const shuffledLetters = letters.sort(() => 0.5 - Math.random()).slice(0, 15)
+    const answerLetters = answer.split('').sort(() => 0.5 - Math.random())
+    return shuffledLetters.concat(answerLetters).sort(() => 0.5 - Math.random())
 }
 
-function selectScrambledOption(scrambledOption, correctOption) {
+function selectLetter(letterElement) {
     const userInput = document.getElementById('user-answer')
-    userInput.value = correctOption // Directly place the correct option for now
+    userInput.value += letterElement.textContent
+    letterElement.style.display = 'none'
 }
 
 function checkAnswer(correctAnswer, userAnswer) {
@@ -148,8 +149,8 @@ function showResultsButton() {
     viewResultsButton.classList.remove('hidden')
 
     viewResultsButton.addEventListener('click', () => {
-        localStorage.setItem('score', score) // ذخیره نمره در localStorage
-        window.location.href = 'index3.html' // هدایت به صفحه نمرات
+        localStorage.setItem('score', score)
+        window.location.href = 'index3.html'
     })
 }
 
