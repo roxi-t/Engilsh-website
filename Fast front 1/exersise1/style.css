@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #1a2a6c, #b21f1f, #fdbb2d);
+    color: white;
+    text-align: center;
+}
+
+.navbar {
+    display: flex; /* use flex in css for rispansive */
+    justify-content: space-between;
+    align-items: center; /* for menu in center  */
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .menu-links a,
+.navbar .register-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+/* hover for menu */
+.menu-links a:hover {
+    color: #00aaff;
+    transition: 0.3s;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar .register-links .signup-btn {
+    border: 1px solid white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*  space between the img box and the text */
+    height: 100vh;
+    padding: 0 20px;
+    text-align: right;
+    direction: ltr; 
+}
+
+.hero-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero-section p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons a {
+    display: inline-block; 
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.buttons .join {
+    background: #00aaff;
+    color: white;
+}
+
+.buttons .learn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.buttons .join:hover {
+    background: #0088cc;
+}
+
+.buttons .learn:hover {
+    background: white;
+    color: #00aaff;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+}

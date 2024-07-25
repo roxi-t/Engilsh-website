@@ -1,0 +1,211 @@
+const easyQB = [
+    { 
+        question: "What is the capital of France?", 
+        options: ["Paris", "London", "Berlin", "Madrid"], 
+        correct: "Paris", 
+        image: "1.webp" 
+    },
+    { 
+        question: "What is 2 + 2?", 
+        options: ["3", "4", "5", "6"], 
+        correct: "4", 
+        image: "2.webp" 
+    },
+    {
+        question: "What is the color of the sky?", 
+        options: ["Blue", "Green", "Red", "Yellow"], 
+        correct: "Blue", 
+        image: "3.webp"
+    },
+    {
+        question: "What is 5 + 3?", 
+        options: ["5", "8", "10", "15"], 
+        correct: "8", 
+        image: "4.webp"
+    },
+    {
+        question: "What is the opposite of hot?", 
+        options: ["Cold", "Warm", "Cool", "Boiling"], 
+        correct: "Cold", 
+        image: "5.webp"
+    }
+];
+
+const intermediateQB = [
+    { 
+        question: "What is the square root of 16?", 
+        options: ["2", "3", "4", "5"], 
+        correct: "4", 
+        image: "1.webp" 
+    },
+    { 
+        question: "What is the chemical symbol for water?", 
+        options: ["H2O", "O2", "CO2", "HO"], 
+        correct: "H2O", 
+        image: "2.webp" 
+    },
+    {
+        question: "Who wrote 'To Kill a Mockingbird'?", 
+        options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], 
+        correct: "Harper Lee", 
+        image: "3.webp"
+    },
+    {
+        question: "What is the capital of Canada?", 
+        options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], 
+        correct: "Ottawa", 
+        image: "4.webp"
+    },
+    {
+        question: "What is 12 * 12?", 
+        options: ["120", "124", "144", "148"], 
+        correct: "144", 
+        image: "5.webp"
+    }
+];
+
+const advancedQB = [
+    { 
+        question: "What is the capital of Australia?", 
+        options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], 
+        correct: "Canberra", 
+        image: "1.webp" 
+    },
+    { 
+        question: "What is the derivative of x^2?", 
+        options: ["x", "2x", "x^2", "2"], 
+        correct: "2x", 
+        image: "2.webp" 
+    },
+    {
+        question: "What is the chemical symbol for gold?", 
+        options: ["Au", "Ag", "Pb", "Fe"], 
+        correct: "Au", 
+        image: "3.webp"
+    },
+    {
+        question: "Who developed the theory of relativity?", 
+        options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], 
+        correct: "Albert Einstein", 
+        image: "4.webp"
+    },
+    {
+        question: "What is the largest planet in our solar system?", 
+        options: ["Earth", "Jupiter", "Saturn", "Mars"], 
+        correct: "Jupiter", 
+        image: "5.webp"
+    }
+];
+
+let status = "Beginner";
+let n = 0;
+let B = 0;
+let I = 0;
+let A = 0;
+
+const loadingElement = document.getElementById('loading');
+const questionContainer = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const resultContainer = document.getElementById('result');
+const resultMessage = document.getElementById('result-message');
+const questionImage = document.getElementById('question-image');
+const restartButton = document.getElementById('restart');
+
+const questions = {
+    Beginner: easyQB,
+    Intermediate: intermediateQB,
+    Advanced: advancedQB
+};
+
+function showLoading() {
+    loadingElement.classList.remove('hidden');
+    questionContainer.classList.add('hidden');
+    resultContainer.classList.add('hidden');
+}
+
+function hideLoading() {
+    loadingElement.classList.add('hidden');
+    questionContainer.classList.remove('hidden');
+}
+
+function showQuestion() {
+    if (n >= 5) {
+        showResult();
+        return;
+    }
+
+    showLoading();
+
+    setTimeout(() => {
+        const currentQuestions = questions[status];
+        const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
+
+        questionElement.textContent = currentQuestion.question;
+        questionImage.src = currentQuestion.image;
+        optionsElement.innerHTML = "";
+
+        currentQuestion.options.forEach(option => {
+            const button = document.createElement('button');
+            button.textContent = option;
+            button.onclick = () => handleAnswer(option === currentQuestion.correct);
+            optionsElement.appendChild(button);
+        });
+
+        n++;
+        hideLoading();
+    }, 1000);
+}
+
+function handleAnswer(isCorrect) {
+    if (status === "Beginner") {
+        if (isCorrect) {
+            B++;
+            status = "Intermediate";
+        }
+    } else if (status === "Intermediate") {
+        if (isCorrect) {
+            I++;
+            status = "Advanced";
+        } else {
+            status = "Beginner";
+        }
+    } else if (status === "Advanced") {
+        if (isCorrect) {
+            A++;
+        } else {
+            status = "Intermediate";
+        }
+    }
+
+    showQuestion();
+}
+
+function showResult() {
+    questionContainer.classList.add('hidden');
+    resultContainer.classList.remove('hidden');
+
+    let message = "Well Done, Here Are courses you may like to improve your grammar skills: ";
+    if (A >= 1) {
+        message += "Advanced Level Courses.";
+    } else if (I >= 1) {
+        message += "Intermediate Level Courses.";
+    } else {
+        message += "Beginner Level Courses.";
+    }
+
+    resultMessage.textContent = message;
+}
+
+restartButton.addEventListener('click', () => {
+    status = "Beginner";
+    n = 0;
+    B = 0;
+    I = 0;
+    A = 0;
+    questionContainer.classList.remove('hidden');
+    resultContainer.classList.add('hidden');
+    showQuestion();
+});
+
+showQuestion();

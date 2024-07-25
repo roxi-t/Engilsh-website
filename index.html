@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Language Level Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1><i class="fas fa-language"></i> Language Level Test</h1>
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+        </div>
+        <div id="question-container" class="hidden">
+            <img id="question-image"  alt="Question Image" class="question-image">
+            <h2 id="question"></h2>
+            <div id="options"></div>
+        </div>
+        <div id="result" class="hidden">
+            <h2 id="result-message"></h2>
+            <button id="restart" class="btn"><i class="fas fa-redo"></i> Restart</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
