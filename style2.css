@@ -32,10 +32,12 @@ body {
         transform: translateY(0) rotate(0);
         opacity: 1;
     }
+
     50% {
         transform: translateY(-20px) rotate(180deg);
         opacity: 0.5;
     }
+
     100% {
         transform: translateY(0) rotate(360deg);
         opacity: 1;
@@ -90,8 +92,15 @@ p {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .menu-toggle {
@@ -110,8 +119,10 @@ p {
     left: 0;
     width: 300px;
     height: 100%;
-    background: linear-gradient(135deg, rgba(102, 238, 255, 0.8), rgba(178, 255, 153, 0.8)); /* گرادیانت آبی تا سبز */
-    color: #444; /* تغییر رنگ متن به خاکستری تیره */
+    background: linear-gradient(135deg, rgba(102, 238, 255, 0.8), rgba(178, 255, 153, 0.8));
+    /* گرادیانت آبی تا سبز */
+    color: #444;
+    /* تغییر رنگ متن به خاکستری تیره */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
@@ -150,12 +161,15 @@ p {
 .menu li {
     margin: 20px 0;
 }
-.menu-nav{
+
+.menu-nav {
     font-size: 30px;
     margin-bottom: -15px;
 }
+
 .menu li a {
-    color: #444; /* تغییر رنگ لینک‌ها به خاکستری تیره */
+    color: #444;
+    /* تغییر رنگ لینک‌ها به خاکستری تیره */
     text-decoration: none;
     font-size: 1.2em;
     display: flex;
@@ -167,6 +181,7 @@ p {
 .menu li a:hover {
     color: #667eea;
 }
+
 /* استایل‌های موجود */
 
 #typing-text {
@@ -177,11 +192,54 @@ p {
 }
 
 @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #667eea; }
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #667eea;
+    }
+}
+
+/* سایر استایل‌ها */
+
+.arrow-up {
+    margin-top: 20px;
+    animation: bounce-up 2s infinite;
+    font-size: 2em;
+    color: #667eea;
+    text-align: center;
+}
+
+@keyframes bounce-up {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(10px);
+        /* حرکت فلش به پایین */
+    }
+
+    60% {
+        transform: translateY(5px);
+        /* حرکت فلش به بالا */
+    }
 }
