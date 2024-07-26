@@ -26,13 +26,13 @@ let status = "Beginner";
 let n = 0;
 let B = 0, I = 0, A = 0;
 let score = 0;
+let currentQuestion = null;
 
 const loadingElement = document.getElementById('loading');
 const questionContainer = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const optionsElement = document.getElementById('options');
 const resultContainer = document.getElementById('result');
-const resultMessage = document.getElementById('result-message');
 const questionImage = document.getElementById('question-image');
 const restartButton = document.getElementById('restart');
 const viewResultsButton = document.getElementById('view-results');
@@ -64,11 +64,11 @@ function showQuestion() {
 
     setTimeout(() => {
         const currentQuestions = questions[status];
-        const currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
+        currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
 
         questionElement.textContent = currentQuestion.question;
         questionImage.src = currentQuestion.image;
-        optionsElement.innerHTML = ""; // پاک کردن گزینه‌های قبلی
+        optionsElement.innerHTML = "";
 
         const combinedLetters = shuffleLetters(currentQuestion.correct);
 
@@ -89,7 +89,7 @@ function showQuestion() {
             userInput.readOnly = true;
             optionsElement.appendChild(userInput);
         } else {
-            userInput.value = ''; // پاک کردن فیلد ورودی در صورت وجود
+            userInput.value = '';
         }
 
         n++;
@@ -99,7 +99,7 @@ function showQuestion() {
 
 function shuffleLetters(answer) {
     const letters = "abcdefghijklmnopqrstuvwxyz".split('');
-    const shuffledLetters = letters.sort(() => 0.5 - Math.random()).slice(0, 15);
+    const shuffledLetters = letters.sort(() => 0.5 - Math.random()).slice(0, 10);
     const answerLetters = answer.split('').sort(() => 0.5 - Math.random());
     return shuffledLetters.concat(answerLetters).sort(() => 0.5 - Math.random());
 }
@@ -110,8 +110,9 @@ function selectLetter(letterElement) {
     letterElement.style.display = 'none';
 }
 
-function checkAnswer(correctAnswer, userAnswer) {
-    if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+function checkAnswer() {
+    const userInput = document.getElementById('user-answer').value;
+    if (userInput.trim().toLowerCase() === currentQuestion.correct.trim().toLowerCase()) {
         score++;
         handleAnswer(true);
     } else {
@@ -120,28 +121,22 @@ function checkAnswer(correctAnswer, userAnswer) {
 }
 
 function handleAnswer(isCorrect) {
-    if (status === "Beginner") {
-        if (isCorrect) {
-            B++;
+    if (isCorrect) {
+        if (status === "Beginner") {
             status = "Intermediate";
-        }
-    } else if (status === "Intermediate") {
-        if (isCorrect) {
-            I++;
+        } else if (status === "Intermediate") {
             status = "Advanced";
-        } else {
-            status = "Beginner";
         }
-    } else if (status === "Advanced") {
-        if (isCorrect) {
-            A++;
-        } else {
+    } else {
+        if (status === "Intermediate") {
+            status = "Beginner";
+        } else if (status === "Advanced") {
             status = "Intermediate";
         }
     }
 
     n++;
-    showQuestion(); // فراخوانی مجدد برای نمایش سوال بعدی
+    showQuestion();
 }
 
 function showResultsButton() {
@@ -168,9 +163,6 @@ restartButton.addEventListener('click', () => {
     showQuestion();
 });
 
-document.getElementById('submit').addEventListener('click', () => {
-    const userInput = document.getElementById('user-answer').value;
-    checkAnswer(currentQuestion.correct, userInput);
-});
+document.getElementById('submit').addEventListener('click', checkAnswer);
 
 showQuestion();
