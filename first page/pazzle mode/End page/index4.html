@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="level-background" id="level-background"></div>
     <div class="result-container">
         <h1>Test Result</h1>
         <p id="score-message">Your score is <span id="score"></span> out of 10.</p>
@@ -15,26 +16,25 @@
         <button class="home-btn" onclick="goHome()">Back to Home</button>
     </div>
     <script>
-        // Assuming score is stored in localStorage
         let score = localStorage.getItem('score') || 0;
-        document.getElementById('score').textContent = score;
+        let level = 'D'; // Default level
 
-        // Determine the level based on the score
-        let level = '';
         if (score >= 9) {
             level = 'A';
         } else if (score >= 7) {
             level = 'B';
         } else if (score >= 5) {
             level = 'C';
-        } else {
-            level = 'D';
         }
+
+        document.getElementById('score').textContent = score;
         document.getElementById('level').textContent = level;
+        document.getElementById('level-background').textContent = level;
 
         function goHome() {
-            window.location.href = 'first page/index2.html'; // Replace with your home page URL
+            window.location.href = 'first page/index2.html';
         }
     </script>
 </body>
 </html>
+

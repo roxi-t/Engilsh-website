@@ -1,4 +1,3 @@
-/* General body style */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #e09, #d0e);
@@ -12,7 +11,20 @@ body {
     position: relative;
 }
 
-/* Container for result display */
+.  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1000px; /* بزرگتر کردن اندازه فونت برای پوشش کل صفحه */
+    color: rgba(255, 255, 255, 0.1); /* کاهش شفافیت */
+    z-index: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+    animation: focusZoom 5s infinite ease-in-out; /* اضافه کردن انیمیشن */
+}
+
 .result-container {
     background: rgba(255, 255, 255, 0.1);
     padding: 40px;
@@ -24,24 +36,24 @@ body {
     position: relative;
     animation: fadeIn 1.5s ease-in-out;
     z-index: 1;
+    overflow: hidden;
 }
 
-/* Heading style */
 .result-container h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 20px;
     color: #fff;
 }
 
-/* Paragraph style */
 .result-container p {
     font-size: 1.3em;
     margin-bottom: 30px;
     line-height: 1.5;
     color: #f0f0f0;
+    position: relative;
+    z-index: 1;
 }
 
-/* Button style */
 .home-btn {
     background: #667eea;
     color: white;
@@ -53,6 +65,8 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
     text-transform: uppercase;
+    position: relative;
+    z-index: 1;
 }
 
 .home-btn:hover {
@@ -60,7 +74,6 @@ body {
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.7);
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -69,5 +82,14 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes focusZoom {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
     }
 }
