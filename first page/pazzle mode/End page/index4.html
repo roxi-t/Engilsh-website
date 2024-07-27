@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result</title>
+    <link rel="stylesheet" href="style.4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="result-container">
+        <h1>Test Result</h1>
+        <p id="score-message">Your score is <span id="score"></span> out of 10.</p>
+        <p id="level-message">Your level is <span id="level"></span>.</p>
+        <button class="home-btn" onclick="goHome()">Back to Home</button>
+    </div>
+    <script>
+        // Assuming score is stored in localStorage
+        let score = localStorage.getItem('score') || 0;
+        document.getElementById('score').textContent = score;
+
+        // Determine the level based on the score
+        let level = '';
+        if (score >= 9) {
+            level = 'A';
+        } else if (score >= 7) {
+            level = 'B';
+        } else if (score >= 5) {
+            level = 'C';
+        } else {
+            level = 'D';
+        }
+        document.getElementById('level').textContent = level;
+
+        function goHome() {
+            window.location.href = 'first page/index2.html'; // Replace with your home page URL
+        }
+    </script>
+</body>
+</html>

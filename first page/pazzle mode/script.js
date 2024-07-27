@@ -24,9 +24,9 @@ const advancedQB = [
 
 let status = "Beginner";
 let n = 0;
-let B = 0, I = 0, A = 0;
 let score = 0;
 let currentQuestion = null;
+let answeredQuestions = new Set(); // Set to track answered questions
 
 const loadingElement = document.getElementById('loading');
 const questionContainer = document.getElementById('question-container');
@@ -54,6 +54,21 @@ function hideLoading() {
     questionContainer.classList.remove('hidden');
 }
 
+function getNextQuestion() {
+    const currentQuestions = questions[status];
+    let nextQuestion = null;
+
+    while (!nextQuestion) {
+        const index = Math.floor(Math.random() * currentQuestions.length);
+        if (!answeredQuestions.has(index)) {
+            nextQuestion = currentQuestions[index];
+            answeredQuestions.add(index);
+        }
+    }
+
+    return nextQuestion;
+}
+
 function showQuestion() {
     if (n >= 5) {
         showResultsButton();
@@ -63,8 +78,7 @@ function showQuestion() {
     showLoading();
 
     setTimeout(() => {
-        const currentQuestions = questions[status];
-        currentQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
+        currentQuestion = getNextQuestion();
 
         questionElement.textContent = currentQuestion.question;
         questionImage.src = currentQuestion.image;
@@ -152,10 +166,8 @@ function showResultsButton() {
 restartButton.addEventListener('click', () => {
     status = "Beginner";
     n = 0;
-    B = 0;
-    I = 0;
-    A = 0;
     score = 0;
+    answeredQuestions.clear(); // Clear answered questions set
     questionContainer.classList.remove('hidden');
     resultContainer.classList.add('hidden');
     viewResultsButton.classList.add('hidden');

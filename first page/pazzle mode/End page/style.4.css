@@ -1,0 +1,73 @@
+/* General body style */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e09, #d0e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container for result display */
+.result-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: fadeIn 1.5s ease-in-out;
+    z-index: 1;
+}
+
+/* Heading style */
+.result-container h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Paragraph style */
+.result-container p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #f0f0f0;
+}
+
+/* Button style */
+.home-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    text-transform: uppercase;
+}
+
+.home-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.7);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
