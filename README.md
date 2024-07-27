@@ -1,30 +1,52 @@
-# English-Website
-In this repository, we are trying to design a site with special algorithms to determine the language level of users through interactive tests and puzzles. Our goal is to provide an engaging and educational experience that helps users assess their language proficiency accurately.
+# Language Level Test - Puzzle Mode
+
+This project is a web-based quiz application designed to assess users' language skills through a puzzle-based interface. Users are presented with questions and must form correct answers by selecting and arranging scrambled letters. The application features various difficulty levels and a visually appealing design.
 
 ## Table of Contents
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
+- [Acknowledgments](#acknowledgments)
 
 ## Features
 
-- **Interactive Language Tests**: Users can take various tests designed to evaluate their language skills through multiple-choice questions and puzzles.
-- **Real-Time Feedback**: Immediate feedback on answers allows users to learn from their mistakes and improve their skills.
-- **User-Friendly Interface**: A clean and intuitive design that enhances user experience across different devices.
-- **Progress Tracking**: Users can track their progress and see how their language skills improve over time.
-- **Responsive Design**: The site is fully responsive, ensuring a seamless experience on mobile, tablet, and desktop devices.
+- **Dynamic Puzzle Mode**: Users select and arrange letters to form correct answers.
+- **Difficulty Levels**: Questions are categorized into Beginner, Intermediate, and Advanced levels.
+- **Interactive UI**: Includes floating animations and a responsive design to enhance user engagement.
+- **Instant Feedback**: Users receive immediate feedback on their answers and can progress to the next question.
+- **Score Tracking**: Scores are stored and displayed at the end of the quiz.
 
 ## Technologies Used
 
-- **HTML5**: For structuring the web pages.
-- **CSS3**: For styling the application and making it visually appealing.
-- **JavaScript**: For adding interactivity and handling user input.
-- **Bootstrap**: (if used) For responsive design and layout components.
-- **JSON**: (if applicable) For storing questions and answers dynamically.
+- **HTML5**: Structure and content
+- **CSS3**: Styling, animations, and responsive design
+- **JavaScript (ES6)**: Logic for quiz functionality and interactivity
+- **Font Awesome**: Icons used in the user interface
+
+## Project Structure
+
+Language-Level-Test/
+│
+├── index.html          # Main quiz page
+├── style.css           # Stylesheet for the main quiz page
+├── script.js           # JavaScript logic for the quiz
+├── start.html          # Start page with introduction
+├── style2.css          # Stylesheet for the start page
+├── script2.js          # JavaScript for start page interactions
+├── results.html        # Results page to display scores
+├── style3.css          # Stylesheet for the results page
+├── images/             # Directory containing image assets
+│   ├── 1.webp
+│   ├── 2.webp
+│   ├── ... (other images)
+├── README.md           # This README file
+
 
 ## Installation
 
@@ -32,45 +54,50 @@ To set up this project locally, follow these steps:
 
 1. Clone the repository:
    
-   git clone https://github.com/yourusername/English-website.git
+   git clone https://github.com/yourusername/Language-Level-Test.git
    
 2. Navigate to the project directory:
    
-   cd English-website
+   cd Language-Level-Test
    
-3. Open index.html in your web browser to view the application.
+3. Open the Project:
+   Open start.html in a web browser to begin.
 
 ## Usage
 
-1. Start by visiting the welcome page to learn about the language tests available.
-2. Click on the "Start Test" button to begin the assessment.
-3. Answer the questions presented and submit your answers.
-4. After completing the test, view your results to see your score and areas for improvement.
-5. You can retake the test or explore additional resources available on the site.
+1. **Start the Test**: Navigate to the start.html page and click "Start the Test."
+2. **Answer Questions**: Use the provided letters to spell out the correct answer and click "Submit."
+3. **View Results**: After completing the quiz, view your score on the results.html page.
+
+## Screenshots
+
+*(Include screenshots of different parts of the application here, such as the start page, question screen, results screen.)*
 
 ## Contributing
 
-We welcome contributions to enhance this project! If you would like to contribute, please follow these steps:
+Contributions are welcome! Please fork the repository, create a new branch for your feature or bug fix, and submit a pull request for review.
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
+1. Fork the project.
+2. Create your feature branch:
    
-   git checkout -b feature/YourFeatureName
+   git checkout -b feature/AmazingFeature
    
-3. Make your changes and commit them:
+3. Commit your changes:
    
-   git commit -m "Add some feature"
+   git commit -m 'Add some AmazingFeature'
    
 4. Push to the branch:
    
-   git push origin feature/YourFeatureName
+   git push origin feature/AmazingFeature
    
-5. Open a pull request describing your changes.
+5. Open a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
+## Acknowledgments
 
-Feel free to modify any section as needed, especially the installation instructions, usage details, and contributing guidelines based on how you want to manage contributions to your project!
+- **Font Awesome** for providing the icons used in the project.
+- **Open Source Community** for the tools and libraries used.
+- Special thanks to all contributors for their work and dedication to this project.
