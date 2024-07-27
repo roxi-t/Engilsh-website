@@ -7,8 +7,8 @@ const easyQB = [
 ];
 
 const intermediateQB = [
-    { question: "What is the square root of 16?", options: ["2", "3", "4", "5"], correct: "4", image: "1.webp" },
-    { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "HO"], correct: "H2O", image: "2.webp" },
+    { question: "What is the square root of 16?", options: ["2", "3", "4", "5"], correct: "4", image: "2.webp" },
+    { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "HO"], correct: "H2O", image: "3.webp" },
     { question: "Who wrote 'To Kill a Mockingbird'?", options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: "Harper Lee", image: "3.webp" },
     { question: "What is the capital of Canada?", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], correct: "Ottawa", image: "4.webp" },
     { question: "What is 12 * 12?", options: ["120", "124", "144", "148"], correct: "144", image: "5.webp" }
@@ -16,7 +16,7 @@ const intermediateQB = [
 
 const advancedQB = [
     { question: "What is the capital of Australia?", options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], correct: "Canberra", image: "1.webp" },
-    { question: "What is the derivative of x^2?", options: ["x", "2x", "x^2", "2"], correct: "2x", image: "2.webp" },
+    { question: "What is the derivative of x^2?", options: ["x", "2x", "x^2", "2"], correct: "2x", image: "5.webp" },
     { question: "What is the chemical symbol for gold?", options: ["Au", "Ag", "Pb", "Fe"], correct: "Au", image: "3.webp" },
     { question: "Who developed the theory of relativity?", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correct: "Albert Einstein", image: "4.webp" },
     { question: "What is the largest planet in our solar system?", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Jupiter", image: "5.webp" }
