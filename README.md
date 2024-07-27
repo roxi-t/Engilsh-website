@@ -54,11 +54,11 @@ To set up this project locally, follow these steps:
 
 1. Clone the repository:
    
-   git clone https://github.com/yourusername/Language-Level-Test.git
+   git clone ```shell https://github.com/yourusername/Language-Level-Test.git```
    
 2. Navigate to the project directory:
    
-   cd Language-Level-Test
+   ```shell cd Language-Level-Test ```
    
 3. Open the Project:
    Open start.html in a web browser to begin.
