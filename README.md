@@ -80,15 +80,15 @@ Contributions are welcome! Please fork the repository, create a new branch for y
 1. Fork the project.
 2. Create your feature branch:
    
-   git checkout -b feature/AmazingFeature
+   ```shell git checkout -b feature/AmazingFeature```
    
 3. Commit your changes:
    
-   git commit -m 'Add some AmazingFeature'
+   ```shell git commit -m 'Add some AmazingFeature'```
    
 4. Push to the branch:
    
-   git push origin feature/AmazingFeature
+   ```shell git push origin feature/AmazingFeature```
    
 5. Open a Pull Request.
 
