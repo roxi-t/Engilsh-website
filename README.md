@@ -30,7 +30,7 @@ This project is a web-based quiz application designed to assess users' language 
 - **Font Awesome**: Icons used in the user interface
 
 ## Project Structure
-
+```shell
 Language-Level-Test/
 │
 ├── index.html          # Main quiz page
@@ -46,7 +46,7 @@ Language-Level-Test/
 │   ├── 2.webp
 │   ├── ... (other images)
 ├── README.md           # This README file
-
+```
 
 ## Installation
 
