@@ -1,9 +1,9 @@
 const easyQB = [
-    { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Paris", image: "1.webp" },
-    { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], correct: "4", image: "2.webp" },
-    { question: "What is the color of the sky?", options: ["Blue", "Green", "Red", "Yellow"], correct: "Blue", image: "3.webp" },
-    { question: "What is 5 + 3?", options: ["5", "8", "10", "15"], correct: "8", image: "4.webp" },
-    { question: "What is the opposite of hot?", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Cold", image: "5.webp" }
+    { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Paris", image: "image/1.webp" },
+    { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], correct: "4", image: "image/2.webp" },
+    { question: "What is the color of the sky?", options: ["Blue", "Green", "Red", "Yellow"], correct: "Blue", image: "image/3.webp" },
+    { question: "What is 5 + 3?", options: ["5", "8", "10", "15"], correct: "8", image: "image/4.webp" },
+    { question: "What is the opposite of hot?", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Cold", image: "image/5.webp" }
 ];
 
 const intermediateQB = [

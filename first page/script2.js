@@ -1,5 +1,5 @@
 function startTest() {
-    window.location.href = 'index.html';
+    window.location.href = '/pazzle mode/index.html';
 }
 
 // Menu toggle script
