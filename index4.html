@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result</title>
+    <link rel="stylesheet" href="style.4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="level-background" id="level-background"></div>
+    <div class="result-container">
+        <h1>Test Result</h1>
+        <p id="score-message">Your score is <span id="score"></span> out of 10.</p>
+        <p id="level-message">Your level is <span id="level"></span>.</p>
+        <button class="home-btn" onclick="goHome()">Back to Home</button>
+    </div>
+    <script>
+        let score = parseInt(localStorage.getItem('score') || 0);
+        let level = 'D'; // Default level
+
+        if (score >= 8) {
+            level = 'A';
+        } else if (score >= 5) {
+            level = 'B';
+        } else if (score >= 3) {
+            level = 'C';
+        } // اگر نمره کمتر از 5 باشد، سطح به طور پیش‌فرض D خواهد بود
+
+        document.getElementById('score').textContent = score;
+        document.getElementById('level').textContent = level;
+        document.getElementById('level-background').textContent = level;
+
+        function goHome() {
+            window.location.href = 'first page/index2.html';
+        }
+    </script>
+</body>
+</html>
