@@ -30,7 +30,7 @@ This project is a web-based quiz application designed to assess users' language 
 - **Font Awesome**: Icons used in the user interface
 
 ## Project Structure
-
+```shell
 Language-Level-Test/
 │
 ├── index.html          # Main quiz page
@@ -46,6 +46,7 @@ Language-Level-Test/
 │   ├── 2.webp
 │   ├── ... (other images)
 ├── README.md           # This README file
+```
 
 
 ## Installation
@@ -54,11 +55,11 @@ To set up this project locally, follow these steps:
 
 1. Clone the repository:
    
-   git clone https://github.com/yourusername/Language-Level-Test.git
+   ```shell git clone https://github.com/yourusername/Language-Level-Test.git ```
    
 2. Navigate to the project directory:
    
-   cd Language-Level-Test
+   ```shell cd Language-Level-Test```
    
 3. Open the Project:
    Open start.html in a web browser to begin.
@@ -80,15 +81,15 @@ Contributions are welcome! Please fork the repository, create a new branch for y
 1. Fork the project.
 2. Create your feature branch:
    
-   git checkout -b feature/AmazingFeature
+   ```shell git checkout -b feature/AmazingFeature```
    
 3. Commit your changes:
    
-   git commit -m 'Add some AmazingFeature'
+   ```shell git commit -m 'Add some AmazingFeature'```
    
 4. Push to the branch:
    
-   git push origin feature/AmazingFeature
+   ```shell git push origin feature/AmazingFeature```
    
 5. Open a Pull Request.
 
