@@ -1,0 +1,95 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e09, #d0e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.level-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1000px; /* بزرگتر کردن اندازه فونت برای پوشش کل صفحه */
+    color: rgba(255, 255, 255, 0.1); /* کاهش شفافیت */
+    z-index: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+    animation: focusZoom 5s infinite ease-in-out; /* اضافه کردن انیمیشن */
+}
+
+.result-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: fadeIn 1.5s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.result-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.result-container p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #f0f0f0;
+    position: relative;
+    z-index: 1;
+}
+
+.home-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.home-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.7);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes focusZoom {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}

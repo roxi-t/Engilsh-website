@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Level Test - Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+    <div class="floating-animations"></div>
+    <div class="result-container">
+        <h1>Your Score</h1>
+        <p id="score-message">You scored <span id="score"></span> out of 10.</p>
+        <button class="home-btn" onclick="goHome()">See your level</button>
+    </div>
+    <script>
+        let score = localStorage.getItem('score') || 0;
+        document.getElementById('score').textContent = score;
+
+        function goHome() {
+            window.location.href = 'index4.html'; // Redirect to the home page
+        }
+    </script>
+</body>
+
+</html>
