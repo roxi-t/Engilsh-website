@@ -21,16 +21,23 @@
         let score = parseInt(localStorage.getItem('score') || 0);
         let totalBonusTime = parseInt(localStorage.getItem('totalBonusTime') || 0);
         let quickAnswerBonus = parseInt(localStorage.getItem('quickAnswerBonus') || 0);
-        let bonusPoints = Math.floor(totalBonusTime / 120); // 1 point per 2 minutes saved
-
-        document.getElementById('score').textContent = score + bonusPoints + quickAnswerBonus;
+        let bonusPoints = Math.floor(totalBonusTime / 120);
+    
+        // Total score should not exceed 10
+        let totalScore = score + bonusPoints + quickAnswerBonus;
+        if (totalScore > 10) {
+            totalScore = 10;
+        }
+    
+        document.getElementById('score').textContent = totalScore;
         document.getElementById('bonus').textContent = bonusPoints;
         document.getElementById('time-saved').textContent = totalBonusTime;
         document.getElementById('quick-bonus').textContent = quickAnswerBonus;
-
+    
         function goHome() {
-            window.location.href = 'index4.html'; // Redirect to the home page
+            window.location.href = 'index4.html';
         }
     </script>
+    
 </body>
 </html>

@@ -26,7 +26,13 @@ let status = "Beginner";
 let n = 0;
 let score = 0;
 let currentQuestion = null;
-let answeredQuestions = new Set(); // Set to track answered questions
+let answeredQuestions = new Set();
+let totalTime = 60;
+let timeLeft = totalTime;
+let totalBonusTime = 0;
+let quickAnswerBonus = 0;
+let timerInterval;
+let questionStartTime;
 
 const loadingElement = document.getElementById('loading');
 const questionContainer = document.getElementById('question-container');
@@ -43,13 +49,6 @@ const questions = {
     Advanced: advancedQB
 };
 
-let totalTime = 60; // 60 seconds per question
-let timeLeft = totalTime;
-let totalBonusTime = 0; // Total bonus time for correct answers
-let quickAnswerBonus = 0; // Bonus points for quick answers
-let timerInterval;
-let questionStartTime;
-
 function showLoading() {
     loadingElement.classList.remove('hidden');
     questionContainer.classList.add('hidden');
@@ -64,16 +63,18 @@ function hideLoading() {
 function getNextQuestion() {
     const currentQuestions = questions[status];
     let nextQuestion = null;
+    let tries = 0;
 
-    while (!nextQuestion) {
+    while (!nextQuestion && tries < 100) {
         const index = Math.floor(Math.random() * currentQuestions.length);
         if (!answeredQuestions.has(index)) {
             nextQuestion = currentQuestions[index];
             answeredQuestions.add(index);
         }
+        tries++;
     }
 
-    return nextQuestion;
+    return nextQuestion || currentQuestions[Math.floor(Math.random() * currentQuestions.length)];
 }
 
 function showQuestion() {
@@ -83,40 +84,36 @@ function showQuestion() {
     }
 
     showLoading();
+    currentQuestion = getNextQuestion();
+    questionElement.textContent = currentQuestion.question;
+    questionImage.src = currentQuestion.image;
+    optionsElement.innerHTML = "";
 
-    setTimeout(() => {
-        currentQuestion = getNextQuestion();
+    const combinedLetters = shuffleLetters(currentQuestion.correct);
 
-        questionElement.textContent = currentQuestion.question;
-        questionImage.src = currentQuestion.image;
-        optionsElement.innerHTML = "";
+    combinedLetters.forEach(letter => {
+        const letterElement = document.createElement('span');
+        letterElement.textContent = letter;
+        letterElement.classList.add('letter');
+        letterElement.addEventListener('click', () => selectLetter(letterElement));
+        optionsElement.appendChild(letterElement);
+    });
 
-        const combinedLetters = shuffleLetters(currentQuestion.correct);
+    let userInput = document.getElementById('user-answer');
+    if (!userInput) {
+        userInput = document.createElement('input');
+        userInput.type = 'text';
+        userInput.id = 'user-answer';
+        userInput.placeholder = 'Type your answer here...';
+        userInput.readOnly = true;
+        optionsElement.appendChild(userInput);
+    } else {
+        userInput.value = '';
+    }
 
-        combinedLetters.forEach(letter => {
-            const letterElement = document.createElement('span');
-            letterElement.textContent = letter;
-            letterElement.classList.add('letter');
-            letterElement.addEventListener('click', () => selectLetter(letterElement));
-            optionsElement.appendChild(letterElement);
-        });
-
-        let userInput = document.getElementById('user-answer');
-        if (!userInput) {
-            userInput = document.createElement('input');
-            userInput.type = 'text';
-            userInput.id = 'user-answer';
-            userInput.placeholder = 'Type your answer here...';
-            userInput.readOnly = true;
-            optionsElement.appendChild(userInput);
-        } else {
-            userInput.value = '';
-        }
-
-        n++;
-        hideLoading();
-        startTimer(); // Start the timer for the new question
-    }, 1000);
+    n++;
+    hideLoading();
+    startTimer();
 }
 
 function shuffleLetters(answer) {
@@ -133,8 +130,8 @@ function selectLetter(letterElement) {
 }
 
 function checkAnswer() {
-    const userInput = document.getElementById('user-answer').value;
-    if (userInput.trim().toLowerCase() === currentQuestion.correct.trim().toLowerCase()) {
+    const userInput = document.getElementById('user-answer').value.trim().toLowerCase();
+    if (userInput === currentQuestion.correct.trim().toLowerCase()) {
         score++;
         handleAnswer(true);
     } else {
@@ -145,19 +142,19 @@ function checkAnswer() {
 function startTimer() {
     timeLeft = totalTime;
     updateTimerDisplay();
-    questionStartTime = Date.now(); // Start time for the current question
+    questionStartTime = Date.now();
     timerInterval = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            checkAnswer(); // Handle timeout case
+            checkAnswer();
         }
     }, 1000);
 }
 
 function updateTimerDisplay() {
-    document.getElementById('time-left').textContent = timeLeft + 's';
+    document.getElementById('time-left').textContent = `${timeLeft}s`;
 }
 
 function resetTimer() {
@@ -166,27 +163,41 @@ function resetTimer() {
 }
 
 function handleAnswer(isCorrect) {
-    clearInterval(timerInterval); // Stop the timer when an answer is checked
+    clearInterval(timerInterval);
 
     if (isCorrect) {
-        totalBonusTime += timeLeft; // Add remaining time as bonus
-        if (Date.now() - questionStartTime <= 30000) { // Check if answered within 30 seconds
+        totalBonusTime += timeLeft;
+        if (Date.now() - questionStartTime <= 30000) {
             quickAnswerBonus++;
         }
-        if (status === "Beginner") {
-            status = "Intermediate";
-        } else if (status === "Intermediate") {
-            status = "Advanced";
-        }
+        status = getNextStatus(status);
     } else {
-        if (status === "Intermediate") {
-            status = "Beginner";
-        } else if (status === "Advanced") {
-            status = "Intermediate";
-        }
+        status = getPreviousStatus(status);
     }
 
     showQuestion();
+}
+
+function getNextStatus(currentStatus) {
+    switch (currentStatus) {
+        case "Beginner":
+            return "Intermediate";
+        case "Intermediate":
+            return "Advanced";
+        default:
+            return "Advanced";
+    }
+}
+
+function getPreviousStatus(currentStatus) {
+    switch (currentStatus) {
+        case "Intermediate":
+            return "Beginner";
+        case "Advanced":
+            return "Intermediate";
+        default:
+            return "Beginner";
+    }
 }
 
 function showResultsButton() {
@@ -194,15 +205,19 @@ function showResultsButton() {
     resultContainer.classList.remove('hidden');
     viewResultsButton.classList.remove('hidden');
 
-    // Calculate final score with bonus
-    let bonusPoints = Math.floor(totalBonusTime / 120); // 1 point per 2 minutes saved
-    score += bonusPoints + quickAnswerBonus; // Add quick answer bonus to score
+    let bonusPoints = Math.floor(totalBonusTime / 120);
+    let totalScore = score + bonusPoints + quickAnswerBonus;
+
+    // Ensure total score does not exceed 10
+    if (totalScore > 10) {
+        totalScore = 10;
+    }
 
     viewResultsButton.addEventListener('click', () => {
-        localStorage.setItem('score', score);
+        localStorage.setItem('score', totalScore);
         localStorage.setItem('totalBonusTime', totalBonusTime);
         localStorage.setItem('quickAnswerBonus', quickAnswerBonus);
-        window.location.href = 'End page/index3.html';
+        window.location.href = 'index3.html';
     });
 }
 
@@ -212,7 +227,7 @@ restartButton.addEventListener('click', () => {
     score = 0;
     totalBonusTime = 0;
     quickAnswerBonus = 0;
-    answeredQuestions.clear(); // Clear answered questions set
+    answeredQuestions.clear();
     questionContainer.classList.remove('hidden');
     resultContainer.classList.add('hidden');
     viewResultsButton.classList.add('hidden');
@@ -221,10 +236,7 @@ restartButton.addEventListener('click', () => {
 
 document.getElementById('submit').addEventListener('click', () => {
     checkAnswer();
-    resetTimer(); // Reset the timer for the next question
+    resetTimer();
 });
-
-// Initialize the first timer when the page loads
-startTimer();
 
 showQuestion();
