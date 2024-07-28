@@ -177,9 +177,7 @@ restartButton.addEventListener('click', () => {
 document.getElementById('submit').addEventListener('click', checkAnswer);
 
 showQuestion();
-// Add these functions to script.js
-
-let totalTime = 60; // 60 seconds per question
+let totalTime = 60; // Total time for each question
 let timeLeft = totalTime;
 let timerInterval;
 
@@ -191,13 +189,18 @@ function startTimer() {
         updateTimerDisplay();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            checkAnswer(); // Or any other function to handle timeout
+            checkAnswer(); // Function to handle when time runs out
         }
     }, 1000);
 }
 
 function updateTimerDisplay() {
     document.getElementById('time-left').textContent = timeLeft + 's';
+
+    // Update the clock hand rotation
+    const hand = document.getElementById('hand');
+    const degree = (360 / totalTime) * (totalTime - timeLeft);
+    hand.style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
 }
 
 function resetTimer() {
