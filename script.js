@@ -175,32 +175,31 @@ restartButton.addEventListener('click', () => {
 });
 
 document.getElementById('submit').addEventListener('click', checkAnswer);
+// کدهای دیگر شما...
 
-showQuestion();
-let totalTime = 60; // Total time for each question
+let totalTime = 60; // 60 seconds per question
 let timeLeft = totalTime;
+let totalBonusTime = 0; // Total bonus time for correct answers
+let quickAnswerBonus = 0; // Bonus points for quick answers
 let timerInterval;
+let questionStartTime;
 
 function startTimer() {
     timeLeft = totalTime;
     updateTimerDisplay();
+    questionStartTime = Date.now(); // Start time for the current question
     timerInterval = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            checkAnswer(); // Function to handle when time runs out
+            checkAnswer(); // Handle timeout case
         }
     }, 1000);
 }
 
 function updateTimerDisplay() {
     document.getElementById('time-left').textContent = timeLeft + 's';
-
-    // Update the clock hand rotation
-    const hand = document.getElementById('hand');
-    const degree = (360 / totalTime) * (totalTime - timeLeft);
-    hand.style.transform = `translate(-50%, -50%) rotate(${degree}deg)`;
 }
 
 function resetTimer() {
@@ -208,55 +207,47 @@ function resetTimer() {
     startTimer();
 }
 
-// Call startTimer when showing a new question
-function showQuestion() {
-    if (n >= 5) {
-        showResultsButton();
-        return;
+function handleAnswer(isCorrect) {
+    clearInterval(timerInterval); // Stop the timer when an answer is checked
+
+    if (isCorrect) {
+        totalBonusTime += timeLeft; // Add remaining time as bonus
+        if (Date.now() - questionStartTime <= 30000) { // Check if answered within 30 seconds
+            quickAnswerBonus++;
+        }
+        if (status === "Beginner") {
+            status = "Intermediate";
+        } else if (status === "Intermediate") {
+            status = "Advanced";
+        }
+    } else {
+        if (status === "Intermediate") {
+            status = "Beginner";
+        } else if (status === "Advanced") {
+            status = "Intermediate";
+        }
     }
 
-    showLoading();
-
-    setTimeout(() => {
-        currentQuestion = getNextQuestion();
-
-        questionElement.textContent = currentQuestion.question;
-        questionImage.src = currentQuestion.image;
-        optionsElement.innerHTML = "";
-
-        const combinedLetters = shuffleLetters(currentQuestion.correct);
-
-        combinedLetters.forEach(letter => {
-            const letterElement = document.createElement('span');
-            letterElement.textContent = letter;
-            letterElement.classList.add('letter');
-            letterElement.addEventListener('click', () => selectLetter(letterElement));
-            optionsElement.appendChild(letterElement);
-        });
-
-        let userInput = document.getElementById('user-answer');
-        if (!userInput) {
-            userInput = document.createElement('input');
-            userInput.type = 'text';
-            userInput.id = 'user-answer';
-            userInput.placeholder = 'Type your answer here...';
-            userInput.readOnly = true;
-            optionsElement.appendChild(userInput);
-        } else {
-            userInput.value = '';
-        }
-
-        n++;
-        hideLoading();
-        startTimer(); // Start the timer for the new question
-    }, 1000);
+    showQuestion();
 }
 
-// Call resetTimer when a new question is displayed
-document.getElementById('submit').addEventListener('click', () => {
-    checkAnswer();
-    resetTimer(); // Reset the timer for the next question
-});
+function showResultsButton() {
+    questionContainer.classList.add('hidden');
+    resultContainer.classList.remove('hidden');
+    viewResultsButton.classList.remove('hidden');
 
-// Initialize the first timer when the page loads
-startTimer();
+    // Calculate final score with bonus
+    let bonusPoints = Math.floor(totalBonusTime / 120); // 1 point per 2 minutes saved
+    score += bonusPoints + quickAnswerBonus; // Add quick answer bonus to score
+
+    viewResultsButton.addEventListener('click', () => {
+        localStorage.setItem('score', score);
+        localStorage.setItem('totalBonusTime', totalBonusTime);
+        localStorage.setItem('quickAnswerBonus', quickAnswerBonus);
+        window.location.href = 'End page/index3.html';
+    });
+}
+
+// کدهای دیگر شما...
+
+showQuestion();
