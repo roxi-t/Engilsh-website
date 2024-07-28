@@ -16,16 +16,16 @@
         <button class="home-btn" onclick="goHome()">Back to Home</button>
     </div>
     <script>
-        let score = localStorage.getItem('score') || 0;
+        let score = parseInt(localStorage.getItem('score') || 0);
         let level = 'D'; // Default level
 
-        if (score >= 9) {
+        if (score >= 8) {
             level = 'A';
-        } else if (score >= 7) {
-            level = 'B';
         } else if (score >= 5) {
+            level = 'B';
+        } else if (score >= 3) {
             level = 'C';
-        }
+        } // اگر نمره کمتر از 5 باشد، سطح به طور پیش‌فرض D خواهد بود
 
         document.getElementById('score').textContent = score;
         document.getElementById('level').textContent = level;
@@ -37,4 +37,3 @@
     </script>
 </body>
 </html>
-
