@@ -72,7 +72,7 @@ To set up this project locally, follow these steps:
 
 ## Screenshots
 
-*(Include screenshots of different parts of the application here, such as the start page, question screen, results screen.)*
+The demo video of the project is placed in this repository and you can click on the view raw button and download the video.
 
 ## Contributing
 
