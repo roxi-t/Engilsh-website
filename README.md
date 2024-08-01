@@ -72,7 +72,7 @@ To set up this project locally, follow these steps:
 
 ## Screenshots
 
-The demo video of the project is placed in this repository and you can click on the ```shell View raw``` button and download the video.
+The demo video of the project is placed in this repository and you can click on the ``` View raw``` button and download the video.
 
 ## Contributing
 
