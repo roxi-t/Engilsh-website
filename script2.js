@@ -1,5 +1,5 @@
 function startTest() {
-    window.location.href = 'index.html';
+    window.location.href = 'index2.html';
 }
 
 // Menu toggle script

@@ -4,38 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Language Level Test</title>
+    <title>Language Level Test - Puzzle Mode</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <div class="background-letters"></div>
-    <div class="menu-toggle" id="menu-toggle">
-        <i class="fas fa-bars"></i>
-    </div>
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3 class="menu-nav">Menu</h3>
-            <i class="fas fa-times" id="close-btn"></i>
+    <div class="floating-animations"></div>
+    <div class="container">
+        <h1><i class="fas fa-language"></i> Language Level Test - Puzzle Mode</h1>
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
         </div>
-        <ul class="menu">
-            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#courses"><i class="fas fa-book"></i> Courses</a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
-        </ul>
-    </nav>
-    <div class="welcome-container">
-        <h1><span id="typing-text"></span></h1>
-        <p>Ready to find out your language level? Start the test and explore your potential!</p>
-        <button class="start-btn" onclick="startTest()">Start the Test</button>
-        <div class="arrow-up">
-            <i class="fas fa-arrow-up"></i>
+        <div id="timer-container">
+            <div class="clock-face">
+                <div class="hand" id="hand"></div>
+                <div class="timer-icon"><i class="fas fa-stopwatch"></i></div>
+            </div>
+            <div class="time-left" id="time-left">60s</div>
+        </div>
+        <div id="question-container">
+            <img id="question-image" alt="Question Image" class="question-image">
+            <h2 id="question"></h2>
+            <div id="options"></div>
+        </div>
+        <div id="answer-container">
+            <input type="text" id="user-answer" placeholder="Type your answer here..." readonly>
+            <button id="submit" class="btn">Submit</button>
+        </div>
+        <div id="result" class="hidden">
+            <h2 id="result-message"></h2>
+            <button id="view-results" class="btn hidden"><i class="fas fa-eye"></i> View Results</button>
+            <button id="restart" class="btn"><i class="fas fa-redo"></i> Restart</button>
         </div>
     </div>
-    <script src="script2.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
