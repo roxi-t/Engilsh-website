@@ -217,7 +217,7 @@ function showResultsButton() {
         localStorage.setItem('score', totalScore);
         localStorage.setItem('totalBonusTime', totalBonusTime);
         localStorage.setItem('quickAnswerBonus', quickAnswerBonus);
-        window.location.href = 'index3.html';
+        window.location.href = './result page/index3.html';
     });
 }
 

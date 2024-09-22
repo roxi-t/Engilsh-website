@@ -1,5 +1,5 @@
 function startTest() {
-    window.location.href = 'index2.html';
+    window.location.href = './game page/index2.html';
 }
 
 // Menu toggle script
@@ -32,7 +32,7 @@ function createFloatingLetters() {
 createFloatingLetters();
 
 // افکت تایپ‌شونده
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const text = "Welcome!";
     let index = 0;
     const typingText = document.getElementById('typing-text');
