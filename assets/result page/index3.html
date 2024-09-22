@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Level Test - Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+    <div class="floating-animations"></div>
+    <div class="result-container">
+        <h1>Your Score</h1>
+        <p id="score-message">You scored <span id="score"></span> out of 10.</p>
+        <p id="bonus-message">Bonus points: <span id="bonus"></span></p>
+        <p id="time-saved-message">Time saved: <span id="time-saved"></span> seconds</p>
+        <p id="quick-answer-message">Quick Answer Bonus: <span id="quick-bonus"></span></p>
+        <button class="home-btn" onclick="goHome()">See your level</button>
+    </div>
+    <script>
+        let score = parseInt(localStorage.getItem('score') || 0);
+        let totalBonusTime = parseInt(localStorage.getItem('totalBonusTime') || 0);
+        let quickAnswerBonus = parseInt(localStorage.getItem('quickAnswerBonus') || 0);
+        let bonusPoints = Math.floor(totalBonusTime / 120);
+
+        // Total score should not exceed 10
+        let totalScore = score + bonusPoints + quickAnswerBonus;
+        if (totalScore > 10) {
+            totalScore = 10;
+        }
+
+        document.getElementById('score').textContent = totalScore;
+        document.getElementById('bonus').textContent = bonusPoints;
+        document.getElementById('time-saved').textContent = totalBonusTime;
+        document.getElementById('quick-bonus').textContent = quickAnswerBonus;
+
+        function goHome() {
+            window.location.href = 'index4.html';
+        }
+    </script>
+
+</body>
+
+</html>

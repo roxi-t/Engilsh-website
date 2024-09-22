@@ -1,0 +1,1 @@
+convert = (n, age, score, ...data) => data.map(e => e.split(',')).filter(e => e[2] <= age && e[3] >= score).map(e => ({ name: e[0][0].toUpperCase() + e[0].slice(1).toLowerCase(), family: e[1][0].toUpperCase() + e[1].slice(1).toLowerCase(), age: +e[2], score: +e[3] }))
