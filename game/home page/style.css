@@ -126,17 +126,17 @@ h1 {
 
 #timer-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 10px; /* Move timer to the top */
+    right: 10px; /* Align to right */
     z-index: 100;
     text-align: center;
 }
 
 .clock-face {
     position: relative;
-    width: 120px;
-    height: 120px;
-    border: 10px solid transparent;
+    width: 80px; /* Reduced size */
+    height: 80px; /* Reduced size */
+    border: 8px solid transparent;
     border-top-color: #667eea;
     border-bottom-color: #667eea;
     border-radius: 50%;
@@ -150,18 +150,18 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2em;
+    font-size: 1.5em; /* Reduced size */
     color: #fff;
 }
 
 .time-left {
-    font-size: 1.5em;
+    font-size: 1.2em; /* Reduced size */
     color: #fff;
 }
 
 .hand {
     position: absolute;
-    width: 6px;
+    width: 4px;
     height: 50%;
     background-color: #ff5555;
     top: 50%;
@@ -186,134 +186,148 @@ h1 {
 /* For Tablets and Smaller (max-width: 768px) */
 @media (max-width: 768px) {
   body {
-    flex-direction: column; /* Stack content vertically */
+    flex-direction: column;
     padding: 20px;
-    height: auto; /* Remove fixed height */
-    overflow: visible; /* Allow scrolling if content overflows */
+    height: auto;
+    overflow: visible;
   }
 
   .container {
-    padding: 30px; /* Reduce padding */
-    border-radius: 15px; /* Reduce border-radius */
-    width: 100%; /* Full width */
-    max-width: none; /* Remove max-width restriction */
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: none;
   }
 
   h1 {
-    font-size: 2em; /* Reduce font size */
-    margin-bottom: 15px; /* Reduce margin */
+    font-size: 1.8em; /* Reduce font size for question */
+    margin-bottom: 15px;
   }
 
   .question-image {
-    max-width: 90%; /* Increase image width */
-    margin-bottom: 15px; /* Reduce margin */
+    max-width: 80%; /* Reduce image width */
+    margin-bottom: 10px; /* Reduce margin */
   }
 
   .letter {
-    padding: 8px; /* Reduce padding */
-    margin: 4px; /* Reduce margin */
-    font-size: 1em; /* Reduce font size */
-  }
-
-  .btn {
-    padding: 12px 25px; /* Reduce padding */
+    padding: 6px; /* Reduce padding */
+    margin: 4px;
     font-size: 0.9em; /* Reduce font size */
   }
 
+  .btn {
+    padding: 10px 20px; /* Reduce padding */
+    font-size: 0.9em;
+  }
+
   #answer-container {
-    margin-top: 15px; /* Reduce margin */
+    margin-top: 15px;
   }
 
   #user-answer {
-    padding: 8px; /* Reduce padding */
-    font-size: 1em; /* Reduce font size */
-    border-radius: 4px; /* Reduce border-radius */
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 4px;
   }
 
   .floating-puzzles div {
-    padding: 10px; /* Reduce padding */
-    border-radius: 8px; /* Reduce border-radius */
+    padding: 10px;
+    border-radius: 8px;
   }
 
   #timer-container {
-    bottom: 10px; /* Adjust bottom position */
-    right: 10px; /* Adjust right position */
+    top: 10px; /* Move timer closer to top */
+    right: 10px; /* Align to right */
+    width: 70px; /* Adjust size for mobile */
+    height: 70px;
   }
 
   .clock-face {
-    width: 80px; /* Reduce size */
-    height: 80px; /* Reduce size */
-    border-width: 6px; /* Reduce border width */
+    width: 60px; /* Reduce size */
+    height: 60px;
+    border-width: 5px; /* Reduce border width */
   }
 
   .timer-icon {
-    font-size: 1.5em; /* Reduce font size */
-  }
-
-  .time-left {
     font-size: 1.2em; /* Reduce font size */
   }
 
+  .time-left {
+    font-size: 1em; /* Reduce font size */
+  }
+
   .hand {
-    width: 4px; /* Reduce width */
-    height: 45%; /* Adjust height */
+    width: 3px;
+    height: 45%;
   }
 }
 
 /* For Mobile Devices and Smaller (max-width: 480px) */
 @media (max-width: 480px) {
   body {
-    padding: 15px; /* Further reduce padding */
+    padding: 15px;
   }
 
   .container {
-    padding: 20px; /* Further reduce padding */
-    border-radius: 10px; /* Further reduce border-radius */
+    padding: 20px;
+    border-radius: 10px;
   }
 
   h1 {
-    font-size: 1.8em; /* Further reduce font size */
-    margin-bottom: 10px; /* Further reduce margin */
+    font-size: 1.6em; /* Further reduce font size */
+    margin-bottom: 10px;
+  }
+
+  .question-image {
+    max-width: 70%; /* Further reduce image width */
+    margin-bottom: 10px; /* Reduce margin */
   }
 
   .letter {
-    padding: 6px; /* Further reduce padding */
-    margin: 3px; /* Further reduce margin */
-    font-size: 0.9em; /* Further reduce font size */
-  }
-
-  .btn {
-    padding: 10px 20px; /* Further reduce padding */
+    padding: 5px; /* Further reduce padding */
+    margin: 3px;
     font-size: 0.8em; /* Further reduce font size */
   }
 
+  .btn {
+    padding: 8px 15px; /* Further reduce padding */
+    font-size: 0.8em;
+  }
+
   #user-answer {
-    padding: 6px; /* Further reduce padding */
-    font-size: 0.9em; /* Further reduce font size */
+    padding: 6px;
+    font-size: 0.9em;
   }
 
   .floating-puzzles div {
-    padding: 8px; /* Further reduce padding */
-    border-radius: 5px; /* Further reduce border-radius */
+    padding: 8px;
+    border-radius: 5px;
+  }
+
+  #timer-container {
+    top: 10px;
+    right: 10px; /* Align to right */
+    width: 60px; /* Further reduce size */
+    height: 60px;
   }
 
   .clock-face {
-    width: 60px; /* Further reduce size */
-    height: 60px; /* Further reduce size */
-    border-width: 4px; /* Further reduce border width */
+    width: 50px; /* Further reduce size */
+    height: 50px;
+    border-width: 4px;
   }
 
   .timer-icon {
-    font-size: 1.2em; /* Further reduce font size */
+    font-size: 1em;
   }
 
   .time-left {
-    font-size: 1em; /* Further reduce font size */
+    font-size: 0.9em;
   }
 
   .hand {
-    width: 3px; /* Further reduce width */
-    height: 40%; /* Further adjust height */
+    width: 2px;
+    height: 40%;
   }
 }
 
