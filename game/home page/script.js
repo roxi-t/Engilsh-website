@@ -1,13 +1,13 @@
 const easyQB = [
     { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Paris", image: "image/1.webp" },
-    { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], correct: "4", image: "image/6.webp" },
+    { question: "What is the name of the most used programming editor?", options: ["3", "4", "5", "6"], correct: "Vs Code", image: "image/6.webp" },
     { question: "What is the color of the sky?", options: ["Blue", "Green", "Red", "Yellow"], correct: "Blue", image: "image/7.webp" },
-    { question: "What is 5 + 3?", options: ["5", "8", "10", "15"], correct: "8", image: "image/8.webp" },
+    { question: "Who is the creator of the computer?", options: ["5", "8", "10", "15"], correct: "Charles Babbage", image: "image/8.webp" },
     { question: "What is the opposite of hot?", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Cold", image: "image/9.webp" }
 ];
 
 const intermediateQB = [
-    { question: "What is the square root of 16?", options: ["2", "3", "4", "5"], correct: "4", image: "image/2.webp" },
+    { question: "What is the name of this object in English?", options: ["2", "3", "4", "5"], correct: "pencile case", image: "image/2.webp" },
     { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "HO"], correct: "H2O", image: "image/3.webp" },
     { question: "Who wrote 'To Kill a Mockingbird'?", options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: "Harper Lee", image: "image/11.webp" },
     { question: "What is the capital of Canada?", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], correct: "Ottawa", image: "image/15.webp" },
