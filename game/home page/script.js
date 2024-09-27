@@ -16,7 +16,7 @@ const intermediateQB = [
 
 const advancedQB = [
     { question: "What is the capital of Australia?", options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], correct: "Canberra", image: "image/4.webp" },
-    { question: "What is the derivative of x^2?", options: ["x", "2x", "x^2", "2"], correct: "2x", image: "image/5.webp" },
+    { question: "version control system", options: ["x", "2x", "x^2", "2"], correct: "Git", image: "image/5.webp" },
     { question: "What is the chemical symbol for gold?", options: ["Au", "Ag", "Pb", "Fe"], correct: "Au", image: "image/13.webp" },
     { question: "Who developed the theory of relativity?", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correct: "Albert Einstein", image: "image/15.webp" },
     { question: "What is the largest planet in our solar system?", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Jupiter", image: "image/16.webp" }
