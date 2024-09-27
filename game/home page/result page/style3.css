@@ -11,6 +11,7 @@ body {
     position: relative;
 }
 
+/* Floating Animations */
 .floating-animations {
     position: absolute;
     top: 0;
@@ -43,17 +44,16 @@ body {
 }
 
 @keyframes float {
-
     0%,
     100% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-20px);
     }
 }
 
+/* Result Container */
 .result-container {
     background: rgba(255, 255, 255, 0.8);
     padding: 50px;
@@ -80,6 +80,7 @@ p {
     color: #555;
 }
 
+/* Home Button */
 .home-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
@@ -102,9 +103,99 @@ p {
         opacity: 0;
         transform: scale(0.9);
     }
-
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* Responsive Design for Mobile and Smaller Screens */
+@media (max-width: 768px) {
+    body {
+        padding: 20px; /* Allow some space around content */
+    }
+
+    .result-container {
+        padding: 40px; /* Reduce padding for smaller screens */
+        border-radius: 15px; /* Slightly reduce border radius */
+        max-width: 100%; /* Full width for small screens */
+        width: 100%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Soften shadow */
+    }
+
+    h1 {
+        font-size: 2.2em; /* Slightly reduce heading size */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    p {
+        font-size: 1.2em; /* Slightly reduce text size */
+        margin-bottom: 20px; /* Adjust margin */
+    }
+
+    .home-btn {
+        padding: 12px 30px; /* Reduce button padding */
+        font-size: 1em; /* Slightly reduce button text size */
+        border-radius: 25px; /* Reduce border radius */
+    }
+
+    /* Floating Animations adjustments for mobile */
+    .floating-animations::before,
+    .floating-animations::after {
+        filter: blur(30px); /* Reduce blur for smaller screens */
+    }
+
+    .floating-animations::before {
+        width: 150px;
+        height: 150px;
+    }
+
+    .floating-animations::after {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Further adjustments for very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Further reduce padding */
+    }
+
+    .result-container {
+        padding: 30px; /* Further reduce container padding */
+        border-radius: 10px; /* Further reduce border radius */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soften shadow more */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Further reduce heading size */
+        margin-bottom: 10px; /* Adjust margin */
+    }
+
+    p {
+        font-size: 1em; /* Further reduce text size */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    .home-btn {
+        padding: 10px 25px; /* Further reduce button padding */
+        font-size: 0.9em; /* Further reduce button text size */
+    }
+
+    /* Floating Animations adjustments for very small screens */
+    .floating-animations::before,
+    .floating-animations::after {
+        filter: blur(20px); /* Reduce blur more */
+    }
+
+    .floating-animations::before {
+        width: 100px;
+        height: 100px;
+    }
+
+    .floating-animations::after {
+        width: 150px;
+        height: 150px;
     }
 }

@@ -11,23 +11,22 @@ body {
     position: relative;
 }
 
+/* Level Background */
 .level-background {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1000px;
-    /* بزرگتر کردن اندازه فونت برای پوشش کل صفحه */
-    color: rgba(255, 255, 255, 0.1);
-    /* کاهش شفافیت */
+    font-size: 1000px; /* Large font size to cover entire screen */
+    color: rgba(255, 255, 255, 0.1); /* Reduced opacity */
     z-index: 0;
     pointer-events: none;
     white-space: nowrap;
     line-height: 1;
-    animation: focusZoom 5s infinite ease-in-out;
-    /* اضافه کردن انیمیشن */
+    animation: focusZoom 5s infinite ease-in-out; /* Added animation */
 }
 
+/* Result Container */
 .result-container {
     background: rgba(255, 255, 255, 0.1);
     padding: 40px;
@@ -57,6 +56,7 @@ body {
     z-index: 1;
 }
 
+/* Home Button */
 .home-btn {
     background: #667eea;
     color: white;
@@ -77,26 +77,83 @@ body {
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.7);
 }
 
+/* Fade-in Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* Zoom Animation for Level Background */
 @keyframes focusZoom {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translate(-50%, -50%) scale(1);
     }
-
     50% {
         transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    .result-container {
+        padding: 30px; /* Reduce padding */
+        border-radius: 15px; /* Reduce border radius */
+        max-width: 100%; /* Full width for small screens */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Soften shadow */
+    }
+
+    .result-container h1 {
+        font-size: 2em; /* Reduce font size */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    .result-container p {
+        font-size: 1.1em; /* Reduce font size */
+        margin-bottom: 20px; /* Adjust margin */
+    }
+
+    .home-btn {
+        padding: 12px 25px; /* Reduce button padding */
+        font-size: 1em; /* Reduce button text size */
+        border-radius: 25px; /* Reduce border radius */
+    }
+
+    .level-background {
+        font-size: 600px; /* Reduce background text size */
+    }
+}
+
+/* Further adjustments for very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .result-container {
+        padding: 20px; /* Further reduce padding */
+        border-radius: 10px; /* Further reduce border radius */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soften shadow more */
+    }
+
+    .result-container h1 {
+        font-size: 1.5em; /* Further reduce font size */
+        margin-bottom: 10px; /* Adjust margin */
+    }
+
+    .result-container p {
+        font-size: 1em; /* Further reduce font size */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    .home-btn {
+        padding: 10px 20px; /* Further reduce button padding */
+        font-size: 0.9em; /* Further reduce button text size */
+        border-radius: 20px; /* Further reduce border radius */
+    }
+
+    .level-background {
+        font-size: 400px; /* Further reduce background text size */
     }
 }
