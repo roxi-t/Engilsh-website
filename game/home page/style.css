@@ -135,9 +135,7 @@ h1 {
 .clock-face {
     position: relative;
     width: 120px;
-    /* Increased size */
     height: 120px;
-    /* Increased size */
     border: 10px solid transparent;
     border-top-color: #667eea;
     border-bottom-color: #667eea;
@@ -153,13 +151,11 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2em;
-    /* Increased size */
     color: #fff;
 }
 
 .time-left {
     font-size: 1.5em;
-    /* Increased size */
     color: #fff;
 }
 
@@ -183,4 +179,158 @@ h1 {
     to {
         transform: translateX(-50%) translateY(-100%) rotate(360deg);
     }
+}
+
+/* Responsive Design for Mobile Devices */
+
+/* For Tablets and Smaller (max-width: 768px) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* Stack content vertically */
+    padding: 20px;
+    height: auto; /* Remove fixed height */
+    overflow: visible; /* Allow scrolling if content overflows */
+  }
+
+  .container {
+    padding: 30px; /* Reduce padding */
+    border-radius: 15px; /* Reduce border-radius */
+    width: 100%; /* Full width */
+    max-width: none; /* Remove max-width restriction */
+  }
+
+  h1 {
+    font-size: 2em; /* Reduce font size */
+    margin-bottom: 15px; /* Reduce margin */
+  }
+
+  .question-image {
+    max-width: 90%; /* Increase image width */
+    margin-bottom: 15px; /* Reduce margin */
+  }
+
+  .letter {
+    padding: 8px; /* Reduce padding */
+    margin: 4px; /* Reduce margin */
+    font-size: 1em; /* Reduce font size */
+  }
+
+  .btn {
+    padding: 12px 25px; /* Reduce padding */
+    font-size: 0.9em; /* Reduce font size */
+  }
+
+  #answer-container {
+    margin-top: 15px; /* Reduce margin */
+  }
+
+  #user-answer {
+    padding: 8px; /* Reduce padding */
+    font-size: 1em; /* Reduce font size */
+    border-radius: 4px; /* Reduce border-radius */
+  }
+
+  .floating-puzzles div {
+    padding: 10px; /* Reduce padding */
+    border-radius: 8px; /* Reduce border-radius */
+  }
+
+  #timer-container {
+    bottom: 10px; /* Adjust bottom position */
+    right: 10px; /* Adjust right position */
+  }
+
+  .clock-face {
+    width: 80px; /* Reduce size */
+    height: 80px; /* Reduce size */
+    border-width: 6px; /* Reduce border width */
+  }
+
+  .timer-icon {
+    font-size: 1.5em; /* Reduce font size */
+  }
+
+  .time-left {
+    font-size: 1.2em; /* Reduce font size */
+  }
+
+  .hand {
+    width: 4px; /* Reduce width */
+    height: 45%; /* Adjust height */
+  }
+}
+
+/* For Mobile Devices and Smaller (max-width: 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px; /* Further reduce padding */
+  }
+
+  .container {
+    padding: 20px; /* Further reduce padding */
+    border-radius: 10px; /* Further reduce border-radius */
+  }
+
+  h1 {
+    font-size: 1.8em; /* Further reduce font size */
+    margin-bottom: 10px; /* Further reduce margin */
+  }
+
+  .letter {
+    padding: 6px; /* Further reduce padding */
+    margin: 3px; /* Further reduce margin */
+    font-size: 0.9em; /* Further reduce font size */
+  }
+
+  .btn {
+    padding: 10px 20px; /* Further reduce padding */
+    font-size: 0.8em; /* Further reduce font size */
+  }
+
+  #user-answer {
+    padding: 6px; /* Further reduce padding */
+    font-size: 0.9em; /* Further reduce font size */
+  }
+
+  .floating-puzzles div {
+    padding: 8px; /* Further reduce padding */
+    border-radius: 5px; /* Further reduce border-radius */
+  }
+
+  .clock-face {
+    width: 60px; /* Further reduce size */
+    height: 60px; /* Further reduce size */
+    border-width: 4px; /* Further reduce border width */
+  }
+
+  .timer-icon {
+    font-size: 1.2em; /* Further reduce font size */
+  }
+
+  .time-left {
+    font-size: 1em; /* Further reduce font size */
+  }
+
+  .hand {
+    width: 3px; /* Further reduce width */
+    height: 40%; /* Further adjust height */
+  }
+}
+
+/* Additional responsive styles for floating puzzles */
+@media (max-width: 768px) {
+  .floating-puzzles {
+    display: none; /* Hide floating puzzles on mobile */
+  }
+}
+
+/* Additional responsive styles for larger screens */
+@media (min-width: 769px) {
+  body {
+    overflow: hidden; /* Prevent overflow on larger screens */
+  }
+
+  .floating-puzzles div {
+    animation-duration: 12s; /* Slow down animation for larger screens */
+  }
 }
