@@ -11,6 +11,7 @@ body {
     position: relative;
 }
 
+/* Floating Background Letters */
 .background-letters {
     position: absolute;
     top: 0;
@@ -44,6 +45,7 @@ body {
     }
 }
 
+/* Main Container */
 .welcome-container {
     background: rgba(255, 255, 255, 0.9);
     padding: 50px;
@@ -74,6 +76,7 @@ p {
     color: #555;
 }
 
+/* Start Button */
 .start-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
@@ -103,6 +106,7 @@ p {
     }
 }
 
+/* Menu Toggle Button */
 .menu-toggle {
     position: fixed;
     top: 20px;
@@ -113,6 +117,7 @@ p {
     color: #444;
 }
 
+/* Sidebar */
 #sidebar {
     position: fixed;
     top: 0;
@@ -120,9 +125,7 @@ p {
     width: 300px;
     height: 100%;
     background: linear-gradient(135deg, rgba(102, 238, 255, 0.8), rgba(178, 255, 153, 0.8));
-    /* گرادیانت آبی تا سبز */
     color: #444;
-    /* تغییر رنگ متن به خاکستری تیره */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
@@ -169,7 +172,6 @@ p {
 
 .menu li a {
     color: #444;
-    /* تغییر رنگ لینک‌ها به خاکستری تیره */
     text-decoration: none;
     font-size: 1.2em;
     display: flex;
@@ -182,8 +184,7 @@ p {
     color: #667eea;
 }
 
-/* استایل‌های موجود */
-
+/* Typing Text Effect */
 #typing-text {
     border-right: 2px solid #667eea;
     white-space: nowrap;
@@ -202,19 +203,16 @@ p {
 }
 
 @keyframes blink-caret {
-
     from,
     to {
         border-color: transparent;
     }
-
     50% {
         border-color: #667eea;
     }
 }
 
-/* سایر استایل‌ها */
-
+/* Bouncing Arrow */
 .arrow-up {
     margin-top: 20px;
     animation: bounce-up 2s infinite;
@@ -224,7 +222,6 @@ p {
 }
 
 @keyframes bounce-up {
-
     0%,
     20%,
     50%,
@@ -232,14 +229,110 @@ p {
     100% {
         transform: translateY(0);
     }
-
     40% {
         transform: translateY(10px);
-        /* حرکت فلش به پایین */
     }
-
     60% {
         transform: translateY(5px);
-        /* حرکت فلش به بالا */
+    }
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    /* Adjust body padding and overflow */
+    body {
+        overflow: auto;
+        padding: 20px;
+    }
+
+    /* Adjust container padding and font size */
+    .welcome-container {
+        padding: 30px; /* Reduce padding */
+        border-radius: 15px; /* Reduce border-radius */
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2em; /* Reduce font size */
+    }
+
+    p {
+        font-size: 1.1em; /* Reduce font size */
+        margin-bottom: 20px; /* Reduce margin */
+    }
+
+    .start-btn {
+        padding: 12px 30px; /* Reduce padding */
+        font-size: 1em; /* Reduce font size */
+    }
+
+    /* Adjust sidebar for mobile */
+    #sidebar {
+        width: 250px; /* Reduce sidebar width */
+    }
+
+    .sidebar-header {
+        padding: 15px;
+    }
+
+    .menu li {
+        margin: 15px 0; /* Reduce margin */
+    }
+
+    .menu li a {
+        font-size: 1em; /* Reduce font size */
+    }
+
+    /* Adjust menu toggle button */
+    .menu-toggle {
+        top: 10px;
+        left: 10px;
+        font-size: 1.5em; /* Reduce size */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjust container padding and font size */
+    .welcome-container {
+        padding: 20px; /* Further reduce padding */
+        border-radius: 10px; /* Further reduce border-radius */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Further reduce font size */
+    }
+
+    p {
+        font-size: 1em; /* Further reduce font size */
+        margin-bottom: 15px;
+    }
+
+    .start-btn {
+        padding: 10px 25px; /* Further reduce padding */
+        font-size: 0.9em; /* Further reduce font size */
+    }
+
+    /* Further adjust sidebar for mobile */
+    #sidebar {
+        width: 220px; /* Further reduce sidebar width */
+    }
+
+    .sidebar-header {
+        padding: 10px;
+    }
+
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .menu li a {
+        font-size: 0.9em; /* Further reduce font size */
+    }
+
+    /* Further adjust menu toggle button */
+    .menu-toggle {
+        top: 5px;
+        left: 5px;
+        font-size: 1.2em;
     }
 }
