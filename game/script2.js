@@ -1,5 +1,5 @@
 function startTest() {
-    window.location.href = './game page/index2.html';
+    window.location.href = './home page/index2.html';
 }
 
 // Menu toggle script

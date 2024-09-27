@@ -77,7 +77,6 @@ for (let i = 0; i < whishlistBtns.length; i++) {
 const themeToggleBtn = document.getElementById('theme-toggle-btn');
 const body = document.body;
 
-// بازیابی تم ذخیره‌شده در localStorage
 const currentTheme = localStorage.getItem('theme') || 'light';
 
 if (currentTheme === 'dark') {
@@ -87,7 +86,6 @@ if (currentTheme === 'dark') {
   themeToggleBtn.querySelector('ion-icon').setAttribute('name', 'moon-outline');
 }
 
-// افزودن listener به دکمه تغییر تم
 themeToggleBtn.addEventListener('click', () => {
   body.classList.toggle('dark-mode');
   const isDarkMode = body.classList.contains('dark-mode');
