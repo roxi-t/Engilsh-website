@@ -1,28 +1,28 @@
 // Question bank for "Beginner" level
 const easyQB = [
-    { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Paris", image: "image/1.webp" },
-    { question: "What is the name of the most used programming editor?", options: ["3", "4", "5", "6"], correct: "Vs Code", image: "image/6.webp" },
-    { question: "What is the color of the sky?", options: ["Blue", "Green", "Red", "Yellow"], correct: "Blue", image: "image/7.webp" },
-    { question: "Who is the creator of the computer?", options: ["5", "8", "10", "15"], correct: "Charles Babbage", image: "image/8.webp" },
-    { question: "What is the opposite of hot?", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Cold", image: "image/9.webp" }
+    { question: "Mossadegh took control of Iran’s oil industry. What word means “to take full control”?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Nationalize", image: "image/1.webp" },
+    { question: "What word describes freedom from outside control?", options: ["3", "4", "5", "6"], correct: "Independence", image: "image/6.webp" },
+    { question: "Oil is an example of valuable __________ that a country can use.", options: ["Blue", "Green", "Red", "Yellow"], correct: "Resources", image: "image/7.webp" },
+    { question: "The lasting impact or influence Mossadegh left on Iran is called his __________.", options: ["5", "8", "10", "15"], correct: "Legacy", image: "image/8.webp" },
+    { question: "Standing up against something you don’t agree with shows __________.", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Resistance", image: "image/9.webp" }
 ];
 
 // Question bank for "Intermediate" level
 const intermediateQB = [
-    { question: "What is the name of this object in English?", options: ["2", "3", "4", "5"], correct: "pencil case", image: "image/2.webp" },
-    { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "HO"], correct: "H2O", image: "image/3.webp" },
-    { question: "Who wrote 'To Kill a Mockingbird'?", options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: "Harper Lee", image: "image/11.webp" },
-    { question: "What is the capital of Canada?", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], correct: "Ottawa", image: "image/15.webp" },
-    { question: "What is 12 * 12?", options: ["120", "124", "144", "148"], correct: "144", image: "image/12.webp" }
+    { question: "The economic penalties Britain imposed on Iran are called __________.", options: ["2", "3", "4", "5"], correct: "Sanctions", image: "image/2.webp" },
+    { question: "A legal disagreement brought to court is called a __________.", options: ["H2O", "O2", "CO2", "HO"], correct: "Case", image: "image/3.webp" },
+    { question: "Mossadegh’s ability to stay strong under pressure showed his __________.", options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: "Resilience", image: "image/11.webp" },
+    { question: "Someone who shows bravery and is admired, like Mossadegh, is a __________.", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], correct: "Hero", image: "image/15.webp" },
+    { question: "The learning Mossadegh gained in Europe is called his __________.", options: ["120", "124", "144", "148"], correct: "Education", image: "image/12.webp" }
 ];
 
 // Question bank for "Advanced" level
 const advancedQB = [
-    { question: "What is the capital of Australia?", options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], correct: "Canberra", image: "image/4.webp" },
-    { question: "version control system", options: ["x", "2x", "x^2", "2"], correct: "Git", image: "image/5.webp" },
-    { question: "What is the chemical symbol for gold?", options: ["Au", "Ag", "Pb", "Fe"], correct: "Au", image: "image/13.webp" },
-    { question: "Who developed the theory of relativity?", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correct: "Albert Einstein", image: "image/15.webp" },
-    { question: "What is the largest planet in our solar system?", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Jupiter", image: "image/16.webp" }
+    { question: "A country’s right to make its own choices without interference is __________.", options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], correct: "Sovereignty", image: "image/4.webp" },
+    { question: "What word means having control over something important, like oil?", options: ["x", "2x", "x^2", "2"], correct: "Dominance", image: "image/5.webp" },
+    { question: "The act of standing strong against something is called __________.", options: ["Au", "Ag", "Pb", "Fe"], correct: "Resistance", image: "image/13.webp" },
+    { question: "The ability to handle hard times without giving up shows __________.", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correct: "Resilience", image: "image/15.webp" },
+    { question: "Today, Mossadegh’s lasting influence in Iran is known as his __________.", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Legacy", image: "image/16.webp" }
 ];
 
 // Initial game state variables
