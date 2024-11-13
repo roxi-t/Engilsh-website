@@ -1,10 +1,10 @@
 // Question bank for "Beginner" level
 const easyQB = [
-    { question: "Mossadegh took control of Iran’s oil industry. What word means “to take full control”?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Nationalize", image: "image/1.webp" },
-    { question: "What word describes freedom from outside control?", options: ["3", "4", "5", "6"], correct: "Independence", image: "image/6.webp" },
-    { question: "Oil is an example of valuable __________ that a country can use.", options: ["Blue", "Green", "Red", "Yellow"], correct: "Resources", image: "image/7.webp" },
-    { question: "The lasting impact or influence Mossadegh left on Iran is called his __________.", options: ["5", "8", "10", "15"], correct: "Legacy", image: "image/8.webp" },
-    { question: "Standing up against something you don’t agree with shows __________.", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Resistance", image: "image/9.webp" }
+    { question: "Mossadegh took control of Iran’s oil industry. What word means “to take full control”?", options: ["Paris", "London", "Berlin", "Madrid"], correct: "Nationalize", image: "image/nationalize.jpg" },
+    { question: "What word describes freedom from outside control?", options: ["3", "4", "5", "6"], correct: "Independence", image: "image/Independence.webp" },
+    { question: "Oil is an example of valuable __________ that a country can use.", options: ["Blue", "Green", "Red", "Yellow"], correct: "Resources", image: "image/Resources.webp" },
+    { question: "The lasting impact or influence Mossadegh left on Iran is called his __________.", options: ["5", "8", "10", "15"], correct: "Legacy", image: "image/Legacy.jpg" },
+    { question: "Standing up against something you don’t agree with shows __________.", options: ["Cold", "Warm", "Cool", "Boiling"], correct: "Resistance", image: "image/Resistance.jpg" }
 ];
 
 // Question bank for "Intermediate" level
