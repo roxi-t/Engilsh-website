@@ -9,20 +9,20 @@ const easyQB = [
 
 // Question bank for "Intermediate" level
 const intermediateQB = [
-    { question: "The economic penalties Britain imposed on Iran are called __________.", options: ["2", "3", "4", "5"], correct: "Sanctions", image: "image/2.webp" },
-    { question: "A legal disagreement brought to court is called a __________.", options: ["H2O", "O2", "CO2", "HO"], correct: "Case", image: "image/3.webp" },
-    { question: "Mossadegh’s ability to stay strong under pressure showed his __________.", options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: "Resilience", image: "image/11.webp" },
-    { question: "Someone who shows bravery and is admired, like Mossadegh, is a __________.", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], correct: "Hero", image: "image/15.webp" },
-    { question: "The learning Mossadegh gained in Europe is called his __________.", options: ["120", "124", "144", "148"], correct: "Education", image: "image/12.webp" }
+    { question: "The economic penalties Britain imposed on Iran are called __________.", options: ["2", "3", "4", "5"], correct: "Sanctions", image: "image/Sanctions.jpg" },
+    { question: "A legal disagreement brought to court is called a __________.", options: ["H2O", "O2", "CO2", "HO"], correct: "Case", image: "image/case.jpg" },
+    { question: "Mossadegh’s ability to stay strong under pressure showed his __________.", options: ["Harper Lee", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"], correct: "Resilience", image: "image/Resiliance.jpg" },
+    { question: "Someone who shows bravery and is admired, like Mossadegh, is a __________.", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], correct: "Hero", image: "image/hero.jpg" },
+    { question: "The learning Mossadegh gained in Europe is called his __________.", options: ["120", "124", "144", "148"], correct: "Education", image: "image/education.jpg" }
 ];
 
 // Question bank for "Advanced" level
 const advancedQB = [
-    { question: "A country’s right to make its own choices without interference is __________.", options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], correct: "Sovereignty", image: "image/4.webp" },
-    { question: "What word means having control over something important, like oil?", options: ["x", "2x", "x^2", "2"], correct: "Dominance", image: "image/5.webp" },
-    { question: "The act of standing strong against something is called __________.", options: ["Au", "Ag", "Pb", "Fe"], correct: "Resistance", image: "image/13.webp" },
-    { question: "The ability to handle hard times without giving up shows __________.", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correct: "Resilience", image: "image/15.webp" },
-    { question: "Today, Mossadegh’s lasting influence in Iran is known as his __________.", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Legacy", image: "image/16.webp" }
+    { question: "A country’s right to make its own choices without interference is __________.", options: ["Sydney", "Canberra", "Melbourne", "Brisbane"], correct: "Sovereignty", image: "image/Sovereignty.jpg" },
+    { question: "What word means having control over something important, like oil?", options: ["x", "2x", "x^2", "2"], correct: "Dominance", image: "image/Dominance.jpg" },
+    { question: "The act of standing strong against something is called __________.", options: ["Au", "Ag", "Pb", "Fe"], correct: "Resistance", image: "image/Resistance.jpg" },
+    { question: "The ability to handle hard times without giving up shows __________.", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"], correct: "Resilience", image: "image/Resiliance.jpg" },
+    { question: "Today, Mossadegh’s lasting influence in Iran is known as his __________.", options: ["Earth", "Jupiter", "Saturn", "Mars"], correct: "Legacy", image: "image/Legacy.jpg" }
 ];
 
 // Initial game state variables
