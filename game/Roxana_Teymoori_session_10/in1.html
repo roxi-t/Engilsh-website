@@ -29,12 +29,48 @@
                     In the early 1950s, Iran’s oil industry was dominated by the British. The Anglo-Iranian Oil Company (now known as BP) controlled the oil fields, taking the majority of the profits, while Iran received only a small share. Mossadegh, now a respected political figure, saw this as unjust. He believed that Iran deserved to benefit from its own resources.
                     In 1951, Mossadegh became the Prime Minister of Iran. One of his first acts as Prime Minister was to nationalize Iran's oil industry. This decision meant that Iran would take full control of its oil and keep the profits for the country’s own development. The people of Iran celebrated this bold move, viewing Mossadegh as a hero who stood up to foreign powers.
                 </p>
+                <div class="content">
+                    <!-- متن اصلی و محتوا اینجا قرار دارد -->
+                    ...
+                    <!-- دکمه پخش صوت -->
+                    <button id="play-audio" class="audio-button">
+                      <i class="fas fa-play"></i> پخش صدای متن
+                    </button>
+                    <!-- المان صوتی که حاوی فایل صوتی است -->
+                    <audio id="narration-audio">
+                      <source src="./Asstes/Part1.m4a" type="audio/mp3" />
+                      مرورگر شما از پخش این فایل پشتیبانی نمی‌کند.
+                    </audio>
+                  </div>
                 <div class="nav-buttons">
                     <a href="./in2.html" class="cta-button">Continue</a>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const playButton = document.getElementById("play-audio");
+          const audio = document.getElementById("narration-audio");
+          let isPlaying = false;
+  
+          playButton.addEventListener("click", function () {
+            if (!isPlaying) {
+              audio.play();
+              playButton.innerHTML = '<i class="fas fa-pause"></i> توقف صدای متن';
+            } else {
+              audio.pause();
+              playButton.innerHTML = '<i class="fas fa-play"></i> پخش صدای متن';
+            }
+            isPlaying = !isPlaying;
+          });
+  
+          audio.addEventListener("ended", function () {
+            isPlaying = false;
+            playButton.innerHTML = '<i class="fas fa-play"></i> پخش صدای متن';
+          });
+        });
+      </script>
 </body>
 
 </html>
