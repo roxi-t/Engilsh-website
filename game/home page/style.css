@@ -348,3 +348,163 @@ h1 {
     animation-duration: 12s; /* Slow down animation for larger screens */
   }
 }
+/* Spin Wheel Container */
+#wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Wheel Design */
+#wheel {
+  position: relative;
+  width: 240px; /* Increased size */
+  height: 240px; /* Increased size */
+  border-radius: 50%;
+  border: 8px solid #333;
+  overflow: hidden;
+  transform: rotate(0deg);
+  transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #4caf50, #81c784);
+}
+
+/* Wheel Slices */
+.slice {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  line-height: 120px; /* Adjusted for text alignment */
+  transform-origin: center bottom;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Custom Colors for Each Slice */
+.slice:nth-child(1) {
+  transform: rotate(0deg);
+  background: #ff6f61;
+}
+
+.slice:nth-child(2) {
+  transform: rotate(90deg);
+  background: #ffa726;
+}
+
+.slice:nth-child(3) {
+  transform: rotate(180deg);
+  background: #29b6f6;
+}
+
+.slice:nth-child(4) {
+  transform: rotate(270deg);
+  background: #66bb6a;
+}
+
+/* Hover Effect for Slices */
+.slice:hover {
+  background-color: #ffd700;
+  color: #333;
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Spin Button */
+#spin-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #ff6f61, #ffa726);
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+
+#spin-btn:hover {
+  background: linear-gradient(135deg, #ffa726, #ff6f61);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Reward Text */
+#reward-text {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Modal Design */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Close Button */
+#close-modal {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #29b6f6;
+  color: white;
+  border: none;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+#close-modal:hover {
+  background: #0288d1;
+  transform: scale(1.1);
+}
+#reward-text {
+    font-size: 1.8em;
+    color: #ff6f61;
+    font-weight: bold;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Add Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

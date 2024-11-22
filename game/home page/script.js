@@ -265,6 +265,61 @@ document.getElementById('submit').addEventListener('click', () => {
     checkAnswer(); // Check the user's answer
     resetTimer(); // Reset the timer for the next question
 });
+// DOM Elements for Modal and Spin Wheel
+const modal = document.getElementById('spin-modal')
+const closeModalButton = document.getElementById('close-modal')
+const spinButton = document.getElementById('spin-btn')
+const wheel = document.getElementById('wheel')
+const rewardText = document.getElementById('reward-text')
+
+let isSpinning = false
+
+// Function to Open Modal
+function openModal() {
+    modal.classList.remove('hidden')
+}
+
+// Function to Close Modal
+closeModalButton.addEventListener('click', () => {
+    modal.classList.add('hidden')
+    rewardText.textContent = '' // Clear reward text
+})
+
+// Function to Spin the Wheel
+
+
+// Apply Reward Logic
+function applyReward(reward) {
+    switch (reward) {
+        case '+10s':
+            timeLeft += 10 // Add 10 seconds to timer
+            break
+        case 'Hint':
+            alert('سرنخ: با دقت بیشتری بررسی کنید!')
+            break
+        case '50-50':
+            // Remove 2 incorrect options
+            const options = Array.from(document.querySelectorAll('.option'))
+            const incorrectOptions = options.filter(opt => opt.textContent !== currentQuestion.correct)
+            incorrectOptions.slice(0, 2).forEach(opt => opt.style.display = 'none')
+            break
+        case '+5 Points':
+            score += 5 // Add 5 points to score
+            break
+        default:
+            console.log('جایزه ناشناخته')
+    }
+}
+
+// Show Modal After Every Correct Answer
+function handleAnswer(isCorrect) {
+    if (isCorrect) {
+        score++ // Increase score
+        openModal() // Show Spin Wheel Modal after every correct answer
+    }
+    showQuestion() // Proceed to the next question
+}
+
 
 // Display the first question when the page loads
 showQuestion();

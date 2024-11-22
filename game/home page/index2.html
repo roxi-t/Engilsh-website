@@ -39,6 +39,24 @@
             <button id="restart" class="btn"><i class="fas fa-redo"></i> Restart</button>
         </div>
     </div>
+    <!-- Modal for Spin Wheel -->
+<div id="spin-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>چرخ شانس شما!</h2>
+        <div id="wheel-container">
+            <div id="wheel">
+                <div class="slice" data-reward="+10s">+10 ثانیه</div>
+                <div class="slice" data-reward="Hint">سرنخ</div>
+                <div class="slice" data-reward="50-50">حذف ۲ گزینه اشتباه</div>
+                <div class="slice" data-reward="+5 Points">+5 امتیاز</div>
+            </div>
+            <button id="spin-btn">بچرخان</button>
+            <p id="reward-text"></p>
+        </div>
+        <button id="close-modal" class="btn">بستن</button>
+    </div>
+</div>
+
     <script src="script.js"></script>
 </body>
 
