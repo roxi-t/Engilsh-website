@@ -29,12 +29,48 @@
                     Despite Mossadegh’s resilience, foreign powers saw him as a threat to their interests. In 1953, Britain and the United States orchestrated a coup against him. In a violent and chaotic turn of events, Mossadegh was removed from power, arrested, and put on trial. He was sentenced to house arrest, where he spent the rest of his life.
                     Although he was defeated, Mossadegh’s legacy lived on. He became a symbol of resistance and a hero in the eyes of Iranians. To this day, many Iranians remember Mossadegh as the leader who dared to stand up to powerful nations for the sake of justice and independence.
                 </p>
+                <div class="content">
+                    <!-- متن اصلی و محتوا اینجا قرار دارد -->
+                    ...
+                    <!-- دکمه پخش صوت -->
+                    <button id="play-audio" class="audio-button">
+                      <i class="fas fa-play"></i> پخش صدای متن
+                    </button>
+                    <!-- المان صوتی که حاوی فایل صوتی است -->
+                    <audio id="narration-audio">
+                      <source src="./Asstes/Part1.m4a" type="audio/mp3" />
+                      مرورگر شما از پخش این فایل پشتیبانی نمی‌کند.
+                    </audio>
+                  </div>
                 <div class="nav-buttons">
                     <a href="../index1.html" class="cta-button">Go To The Quiz</a>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const playButton = document.getElementById("play-audio");
+          const audio = document.getElementById("narration-audio");
+          let isPlaying = false;
+  
+          playButton.addEventListener("click", function () {
+            if (!isPlaying) {
+              audio.play();
+              playButton.innerHTML = '<i class="fas fa-pause"></i> توقف صدای متن';
+            } else {
+              audio.pause();
+              playButton.innerHTML = '<i class="fas fa-play"></i> پخش صدای متن';
+            }
+            isPlaying = !isPlaying;
+          });
+  
+          audio.addEventListener("ended", function () {
+            isPlaying = false;
+            playButton.innerHTML = '<i class="fas fa-play"></i> پخش صدای متن';
+          });
+        });
+      </script>
 </body>
 
 </html>
