@@ -286,6 +286,34 @@ closeModalButton.addEventListener('click', () => {
 })
 
 // Function to Spin the Wheel
+spinButton.addEventListener('click', () => {
+    if (isSpinning) return // Prevent multiple spins
+    isSpinning = true
+    rewardText.textContent = ''
+
+    const randomSpin = Math.floor(Math.random() * 360) + 720 // Random Spin
+    const rotation = randomSpin % 360
+    const slices = document.querySelectorAll('.slice')
+    const sliceAngle = 360 / slices.length
+    const selectedSliceIndex = Math.floor(rotation / sliceAngle)
+
+    // Animate the spin with added easing effect
+    wheel.style.transition = 'transform 3s ease-out'
+    wheel.style.transform = `rotate(${randomSpin}deg)`
+
+    setTimeout(() => {
+        const selectedSlice = slices[selectedSliceIndex]
+        const reward = selectedSlice.getAttribute('data-reward')
+        rewardText.textContent = `🎉 شما جایزه گرفتید: ${reward}`
+        isSpinning = false
+
+        // Reset spin animation for next time
+        wheel.style.transition = 'none'
+
+        // Apply Reward to Game
+        applyReward(reward)
+    }, 3000)
+})
 
 
 // Apply Reward Logic
@@ -319,6 +347,7 @@ function handleAnswer(isCorrect) {
     }
     showQuestion() // Proceed to the next question
 }
+
 
 
 // Display the first question when the page loads
