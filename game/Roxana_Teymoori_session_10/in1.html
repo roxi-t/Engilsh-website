@@ -34,12 +34,12 @@
                     ...
                     <!-- دکمه پخش صوت -->
                     <button id="play-audio" class="audio-button">
-                      <i class="fas fa-play"></i> پخش صدای متن
+                      <i class="fas fa-play"></i> Play Audio
                     </button>
                     <!-- المان صوتی که حاوی فایل صوتی است -->
                     <audio id="narration-audio">
                       <source src="./Asstes/Part1.m4a" type="audio/mp3" />
-                      مرورگر شما از پخش این فایل پشتیبانی نمی‌کند.
+                      Your browser doesn't support this file format
                     </audio>
                   </div>
                 <div class="nav-buttons">
@@ -57,17 +57,17 @@
           playButton.addEventListener("click", function () {
             if (!isPlaying) {
               audio.play();
-              playButton.innerHTML = '<i class="fas fa-pause"></i> توقف صدای متن';
+              playButton.innerHTML = '<i class="fas fa-pause"></i> Pause the Audio';
             } else {
               audio.pause();
-              playButton.innerHTML = '<i class="fas fa-play"></i> پخش صدای متن';
+              playButton.innerHTML = '<i class="fas fa-play"></i> Play Audio';
             }
             isPlaying = !isPlaying;
           });
   
           audio.addEventListener("ended", function () {
             isPlaying = false;
-            playButton.innerHTML = '<i class="fas fa-play"></i> پخش صدای متن';
+            playButton.innerHTML = '<i class="fas fa-play"></i> Play Audio';
           });
         });
       </script>
