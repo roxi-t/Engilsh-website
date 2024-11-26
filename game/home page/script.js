@@ -304,7 +304,7 @@ spinButton.addEventListener('click', () => {
     setTimeout(() => {
         const selectedSlice = slices[selectedSliceIndex]
         const reward = selectedSlice.getAttribute('data-reward')
-        rewardText.textContent = `🎉 شما جایزه گرفتید: ${reward}`
+        rewardText.textContent = `🎉You got reward!: ${reward}`
         isSpinning = false
 
         // Reset spin animation for next time
@@ -323,7 +323,7 @@ function applyReward(reward) {
             timeLeft += 10 // Add 10 seconds to timer
             break
         case 'Hint':
-            alert('سرنخ: با دقت بیشتری بررسی کنید!')
+            alert('Hint: Be More Careful!')
             break
         case '50-50':
             // Remove 2 incorrect options
@@ -335,7 +335,7 @@ function applyReward(reward) {
             score += 5 // Add 5 points to score
             break
         default:
-            console.log('جایزه ناشناخته')
+            console.log('Unknown Reward')
     }
 }
 
